@@ -1,4 +1,4 @@
-import {dataSource} from './swagger.datasource';
+import {dataSource} from './sow.swagger.datasource';
 import { ControllerDefaults } from '@loopback/boot';
 /* tslint:disable no-any */
 export class SowRepository {

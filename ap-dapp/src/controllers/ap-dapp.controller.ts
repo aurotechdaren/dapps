@@ -55,6 +55,7 @@ export class ApDappController {
 
   async create(@requestBody({required: false}) ap: Ap): Promise<Ap> {
     console.log(ap);
+    //const sow = await this.sowRepository.create();
     return await this.apRepository.create(ap);
   }
 

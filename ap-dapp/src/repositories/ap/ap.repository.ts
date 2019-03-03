@@ -1,5 +1,5 @@
-import {dataSource} from './swagger.datasource';
-import { ControllerDefaults } from '@loopback/boot';
+import {dataSource} from './ap.swagger.datasource';
+//import { ControllerDefaults } from '@loopback/boot';
 /* tslint:disable no-any */
 export class ApRepository {
   model: any;
