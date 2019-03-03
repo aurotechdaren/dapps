@@ -52,8 +52,8 @@ export const sowDefinition = {
             {
               description: 'The sow instance to create.',
               in: 'body',
-              name: 'body',
-              required: true,
+              name: 'sow',
+              required: false,
               schema: {
                 "type": "object",
                 "properties": {

@@ -14,7 +14,7 @@ export class SowRepository {
   }
 
   async create(sowInstance: any): Promise<any> {
-    console.log("Got sow instance: " + sowInstance);
+    console.log("Got sow instance (in APs SOW repository): " + sowInstance);
     return await this.model.create(sowInstance);
   }
 }

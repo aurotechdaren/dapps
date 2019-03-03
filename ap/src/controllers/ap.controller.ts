@@ -44,7 +44,7 @@ export class ApController {
     console.log(ap);
     ap.sowid = "SOW-12345";
     // JSON.stringify({body: {id: "SOW-12345", title: "SOW #2"}})
-    this.sowRepository.create(JSON.stringify({body: {id: "SOW-12345", title: "SOW #2"}}));
+    //await this.sowRepository.create(JSON.stringify({sow: {id: "SOW-12345", title: "SOW #2"}}));
     return await this.apRepository.create(ap);
   }
 
