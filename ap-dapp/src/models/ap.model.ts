@@ -3,10 +3,16 @@ import {Entity, model, property} from '@loopback/repository';
 @model()
 export class Ap extends Entity {
   @property({
-    type: 'number',
+    type: 'string',
     id: true,
+    generated: true,
   })
-  id?: number;
+  id?: string;
+
+  @property({
+    type: 'string',
+  })
+  apid?: string;
 
   @property({
     type: 'string',
@@ -23,6 +29,10 @@ export class Ap extends Entity {
   })
   statementOfNeed?: string;
 
+  @property({
+    type: 'string',
+  })
+  sowid?: string;
 
   constructor(data?: Partial<Ap>) {
     super(data);

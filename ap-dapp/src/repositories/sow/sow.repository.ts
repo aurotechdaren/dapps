@@ -1,5 +1,6 @@
 import {dataSource} from './sow.swagger.datasource';
-import { ControllerDefaults } from '@loopback/boot';
+import {Sow} from '../../models/sow.model';
+//import { ControllerDefaults } from '@loopback/boot';
 /* tslint:disable no-any */
 export class SowRepository {
   model: any;
@@ -14,7 +15,9 @@ export class SowRepository {
   }
 
   async create(sowInstance: any): Promise<any> {
-    console.log("Got sow instance (in APs SOW repository): " + sowInstance);
+    console.log("In /ap-dapp sow repository: received sow instance = " + sowInstance);
+    
+    
     return await this.model.create(sowInstance);
   }
 }

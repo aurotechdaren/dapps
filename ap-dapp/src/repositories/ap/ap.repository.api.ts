@@ -52,7 +52,7 @@ export const apDefinition = {
             {
               description: 'The ap instance to create.',
               in: 'body',
-              name: 'ap',
+              name: 'body',
               required: true,
               schema: {
                 "type": "object",
@@ -68,7 +68,10 @@ export const apDefinition = {
                     },
                     "statementOfNeed": {
                         "type": "string"
-                    }
+                    },
+                    "sowid": {
+                      "type": "string"
+                  }
                 }
               },
             },

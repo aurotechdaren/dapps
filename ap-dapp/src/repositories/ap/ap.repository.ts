@@ -8,7 +8,7 @@ export class ApRepository {
     this.model = dataSource.createModel('ApService', {});
   }
 
-  async find(apId: number) {
+  async find(apId: string) {
     const response = await this.model.findById({id: `${apId}`});
     return (response && response.obj) || [];
   }

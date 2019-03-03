@@ -92,6 +92,10 @@ export const apDappDefinition = {
           statementOfNeed: {
             type: 'string',
             description: 'The statement of need',
+          },
+          sowid: {
+            type: 'string',
+            description: 'The ID of the SOW attached to this AP',
           }
         },
       },
