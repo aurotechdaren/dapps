@@ -12,11 +12,12 @@ import {
   RestBindings,
   Request,
 } from '@loopback/rest';
-//import {requestBody, post, get} from '@loopback/openapi-v3';
-//import {apDappDefinition} from './ap-dapp.controller-v2.api';
+
 import {
-  ApRepository
-} from '../repositories/ap.repository';
+  ApRepository,
+  SowRepository
+} from '../repositories';
+
 import {Ap} from '../models/ap.model';
 
 /* tslint:disable no-any */
@@ -24,8 +25,10 @@ import {Ap} from '../models/ap.model';
 //@api(apDappDefinition)
 export class ApDappController {
   apRepository: ApRepository;
+  sowRepository: SowRepository;
 
   constructor() {
+    this.sowRepository = new SowRepository();
     this.apRepository = new ApRepository();
   }
 

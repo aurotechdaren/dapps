@@ -18,18 +18,13 @@ import {
 } from '@loopback/rest';
 import {Ap} from '../models';
 import {ApRepository} from '../repositories';
-import {SowRepository} from '../repositories/sow.repository';
+
 
 export class ApController {
   constructor(
     @repository(ApRepository)
     public apRepository : ApRepository,
   ) {}
-  
-  // Create the sow repository so we can access the sow creation method
-  @repository(SowRepository)
-    public sowRepository : SowRepository;
-  
 
   @post('/ap', {
     responses: {
@@ -40,11 +35,7 @@ export class ApController {
     },
   })
   async create(@requestBody() ap: Ap): Promise<Ap> {
-    console.log("In AP Controller.  Got ap:");
-    console.log(ap);
-    ap.sowid = "SOW-12345";
-    // JSON.stringify({body: {id: "SOW-12345", title: "SOW #2"}})
-    //await this.sowRepository.create(JSON.stringify({sow: {id: "SOW-12345", title: "SOW #2"}}));
+
     return await this.apRepository.create(ap);
   }
 
