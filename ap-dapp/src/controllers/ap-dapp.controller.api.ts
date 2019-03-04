@@ -12,6 +12,42 @@ export const apDappDefinition = {
       'This is the top-level service that serves the AP Dapp management/facade API, and is dependent on the following services: ap',
   },
   paths: {
+    '/ap-dapp/ap/{apid}/updateSow': {
+      put: {
+          "x-controller-name": "SowController",
+          "x-operation-name": "replaceById",
+          "tags": [
+              "SowController"
+          ],
+          "responses": {
+              "204": {
+                  "description": "Sow PUT success"
+              }
+          },
+          parameters: [
+              {
+                  name: "apid",
+                  description:
+                    'The apId to use when retrieving data from the underlying microservices.',
+                  in: 'path',
+                  schema: {
+                      type: "string"
+                  },
+                  required: true
+              }
+          ],
+          requestBody: {
+              content: {
+                  "application/json": {
+                      "schema": {
+                          "$ref": "#/components/schemas/Sow"
+                      }
+                  }
+              },
+              "x-parameter-index": 1
+          }
+      }
+  },
     '/ap-dapp/ap': {
       get: {
         'x-operation-name': 'getAp',
@@ -99,6 +135,18 @@ export const apDappDefinition = {
           }
         },
       },
-    },
-  },
+        Sow: {
+            title: "Sow",
+            properties: {
+                id: {
+                    "type": "string"
+                },
+                title: {
+                    "type": "string"
+                }
+            }
+        }
+    } 
+  }
 };
+

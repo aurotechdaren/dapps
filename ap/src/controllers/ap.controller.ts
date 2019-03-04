@@ -68,6 +68,7 @@ export class ApController {
   async find(
     @param.query.object('filter', getFilterSchemaFor(Ap)) filter?: Filter,
   ): Promise<Ap[]> {
+
     return await this.apRepository.find(filter);
   }
 

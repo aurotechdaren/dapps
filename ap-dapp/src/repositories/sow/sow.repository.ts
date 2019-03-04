@@ -15,10 +15,15 @@ export class SowRepository {
   }
 
   async create(sowInstance: any): Promise<any> {
-    console.log("In /ap-dapp sow repository: received sow instance = " + sowInstance);
-    
     
     return await this.model.create(sowInstance);
+  }
+
+  async replaceById(sowHttpParams: any): Promise <any> {
+
+    // Documented in the ap-dapp controller - the sowHttpParams is a concatenation of:
+    // sowId and the sow JSON in the body 
+    return await this.model.replaceById(sowHttpParams);
   }
 }
 /* tslint:enable no-any */

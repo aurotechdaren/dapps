@@ -8,42 +8,6 @@ export const apDefinition = {
   basePath: '/',
   schemes: ['http'],
   paths: {
-    '/ap/{id}': {
-      get: {
-        produces: ['*/*'],
-        parameters: [
-          {
-            description: 'Model id',
-            format: 'JSON',
-            in: 'path',
-            name: 'id',
-            required: true,
-            type: 'string',
-          },
-          {
-            description:
-              'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})',
-            format: 'JSON',
-            in: 'query',
-            name: 'filter',
-            required: false,
-            type: 'string',
-          },
-        ],
-        responses: {
-          '200': {
-            description: 'Request was successful',
-            schema: {
-              type: 'string',
-            },
-          },
-        },
-        deprecated: false,
-        operationId: 'findById',
-        summary:
-          'Find all instances of the model matched by filter from the data source.',
-      },
-    },
     '/ap': {
         post: {
           consumes: ['application/json'],
@@ -88,6 +52,83 @@ export const apDefinition = {
           operationId: 'create',
           summary: 'Create an account instance.',
         },
+        get: {
+          "parameters": [
+          {
+              "in": "query",
+              "name": "filter",
+              "schema": {
+              "properties": {
+                  "fields": {
+                  "properties": {
+                      "apid": {
+                      "type": "boolean"
+                      },
+                      "id": {
+                      "type": "boolean"
+                      },
+                      "projectTitle": {
+                      "type": "boolean"
+                      },
+                      "sowid": {
+                      "type": "boolean"
+                      },
+                      "statementOfNeed": {
+                      "type": "boolean"
+                      },
+                      "typeOfWork": {
+                      "type": "boolean"
+                      }
+                  },
+                  "type": "object"
+                  },
+                  "limit": {
+                  "minimum": 0,
+                  "type": "integer"
+                  },
+                  "offset": {
+                  "minimum": 0,
+                  "type": "integer"
+                  },
+                  "order": {
+                  "items": {
+                      "type": "string"
+                  },
+                  "type": "array"
+                  },
+                  "skip": {
+                  "minimum": 0,
+                  "type": "integer"
+                  },
+                  "where": {
+                  "type": "object"
+                  }
+              },
+              "type": "object"
+              },
+              "style": "deepObject"
+          }
+          ],
+          "responses": {
+          "200": {
+              "content": {
+              "application/json": {
+                  "schema": {
+                  "items": {
+                      "$ref": "#/components/schemas/Ap"
+                  },
+                  "type": "array"
+                  }
+              }
+              },
+              "description": "Array of Ap model instances"
+          }
+          },
+          tags: [
+          "ApController"
+          ],
+          operationId: "find"
+      }
       },
     },
     definitions: {

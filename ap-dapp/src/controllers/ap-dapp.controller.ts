@@ -13,6 +13,8 @@ import {
   Request,
 } from '@loopback/rest';
 
+import {Filter} from '@loopback/repository';
+
 import {
   ApRepository,
   SowRepository
@@ -20,6 +22,7 @@ import {
 
 import {Ap} from '../models/ap.model';
 import {Sow} from '../models/sow.model';
+
 
 /* tslint:disable no-any */
 
@@ -33,18 +36,6 @@ export class ApDappController {
     this.apRepository = new ApRepository();
   }
 
-  @get('/ap-dapp/{id}', {
-    responses: {
-      '200': {
-        description: 'Ap model instance',
-        content: {'application/json': {schema: {'x-ts-type': Ap}}},
-      },
-    },
-  })
-  async findById(@param.path.number('id') id: string): Promise<Ap> {
-    return await this.apRepository.find(id);
-  }
-
   @post('/ap-dapp/create', {
     responses: {
       '200': {
@@ -55,8 +46,12 @@ export class ApDappController {
   })
 
   async create(@requestBody({required: false}) ap: Ap): Promise<Ap> {
-    console.log("/ap-dapp AP controller: " + ap);
-    // simulate receiving a SOW
+
+    // Generate a fake AP ID.  Utimately this will come from a service
+    var apid:string = "AP" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    ap.apid = apid;
+
+    // Initialize the blank SOW associated with this AP
     var sowJson = JSON.stringify({title: "New SOW"});
     var sow = await this.sowRepository.create({body: sowJson});
 
@@ -68,6 +63,29 @@ export class ApDappController {
     
     // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
     return await this.apRepository.create({body: ap});
+  }
+
+  @put('/ap-dapp/ap/{apid}/updateSow', {
+    responses: {
+      '204': {
+        description: 'Sow PUT success',
+      },
+    },
+  })
+  async updateSow(@param.path.string('apid') apid: string, @requestBody() sow: Sow): Promise<void> {
+    console.log("Updating sow: " + sow.title);
+
+    // Returns raw JSON
+    // Right now, this find is returning every AP - there is a bug in the WHERE filter
+    // Need to correct it, but for now we'll just take the first AP we find
+    let ap = await this.apRepository.find(apid);
+
+    let sowid: String = ap[0].sowid;
+    console.log("Found ap for: " + apid + ", sowid = " + sowid);
+
+    // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
+    // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)
+    await this.sowRepository.replaceById({body: sow, id: sowid} );
   }
 
 }

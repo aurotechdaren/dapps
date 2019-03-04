@@ -12,4 +12,5 @@ export class ApRepository extends DefaultCrudRepository<
   ) {
     super(Ap, dataSource);
   }
+
 }

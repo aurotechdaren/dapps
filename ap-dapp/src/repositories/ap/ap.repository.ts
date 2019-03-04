@@ -1,5 +1,6 @@
 import {dataSource} from './ap.swagger.datasource';
-//import { ControllerDefaults } from '@loopback/boot';
+import {Filter} from '@loopback/repository';
+
 /* tslint:disable no-any */
 export class ApRepository {
   model: any;
@@ -8,14 +9,15 @@ export class ApRepository {
     this.model = dataSource.createModel('ApService', {});
   }
 
-  async find(apId: string) {
-    const response = await this.model.findById({id: `${apId}`});
-    return (response && response.obj) || [];
+  async find(apid : String): Promise<any> {
+    console.log("(ap.repository) Got apid: " + apid);
+    const response = await this.model.find({Where:{"apid":apid}}, {strictObjectIDCoercion: true});
+    console.log("(ap repository): apid search returned" + JSON.stringify(response.obj));
+    return (response.obj);
   }
 
   async create(apInstance: any): Promise<any> {
-    console.log('in ap repository');
-    console.log(apInstance);
+
     return await this.model.create(apInstance);
   }
 }
