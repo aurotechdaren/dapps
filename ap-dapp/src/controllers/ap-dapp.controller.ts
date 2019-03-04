@@ -80,6 +80,8 @@ export class ApDappController {
     // Need to correct it, but for now we'll just take the first AP we find
     let ap = await this.apRepository.find(apid);
 
+    // Need lots of error handling edge case testing around this
+    console.log(JSON.stringify(ap));
     let sowid: String = ap[0].sowid;
     console.log("Found ap for: " + apid + ", sowid = " + sowid);
 

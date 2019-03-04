@@ -53,63 +53,20 @@ export const apDefinition = {
           summary: 'Create an account instance.',
         },
         get: {
-          "parameters": [
+          produces: ['*/*'],
+          consumes: ['application/json'],
+          parameters: [
           {
-              "in": "query",
-              "name": "filter",
-              "schema": {
-              "properties": {
-                  "fields": {
-                  "properties": {
-                      "apid": {
-                      "type": "boolean"
-                      },
-                      "id": {
-                      "type": "boolean"
-                      },
-                      "projectTitle": {
-                      "type": "boolean"
-                      },
-                      "sowid": {
-                      "type": "boolean"
-                      },
-                      "statementOfNeed": {
-                      "type": "boolean"
-                      },
-                      "typeOfWork": {
-                      "type": "boolean"
-                      }
-                  },
-                  "type": "object"
-                  },
-                  "limit": {
-                  "minimum": 0,
-                  "type": "integer"
-                  },
-                  "offset": {
-                  "minimum": 0,
-                  "type": "integer"
-                  },
-                  "order": {
-                  "items": {
-                      "type": "string"
-                  },
-                  "type": "array"
-                  },
-                  "skip": {
-                  "minimum": 0,
-                  "type": "integer"
-                  },
-                  "where": {
-                  "type": "object"
-                  }
-              },
-              "type": "object"
-              },
-              "style": "deepObject"
+              in: 'query',
+              name: 'filter',
+              required: true,
+              format: 'json',
+              schema: {
+              type: 'string'
+              }
           }
           ],
-          "responses": {
+          responses: {
           "200": {
               "content": {
               "application/json": {

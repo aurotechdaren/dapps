@@ -11,8 +11,18 @@ export class ApRepository {
 
   async find(apid : String): Promise<any> {
     console.log("(ap.repository) Got apid: " + apid);
-    const response = await this.model.find({Where:{"apid":apid}}, {strictObjectIDCoercion: true});
-    console.log("(ap repository): apid search returned" + JSON.stringify(response.obj));
+    console.log("Sending filter as: " + JSON.stringify({filter: {WHERE:{"apid":apid}}}) );
+    
+    let response;
+
+    try {
+     response = await this.model.find({filter: `{"where": {"apid":"${apid}"}}`});
+    
+    } catch(err) {
+      console.log("ERROR: " + err);
+    }
+
+    //console.log("(ap repository): apid search returned" + JSON.stringify(response.obj));
     return (response.obj);
   }
 

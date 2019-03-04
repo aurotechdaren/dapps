@@ -53,7 +53,7 @@ export const sowDefinition = {
             in: 'path',
             name: 'id',
             required: true,
-            type: 'string',
+            type: 'object',
           },
           {
             description: 'The sow instance to update.',
