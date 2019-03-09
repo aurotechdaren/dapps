@@ -17,7 +17,8 @@ import {Filter} from '@loopback/repository';
 
 import {
   ApRepository,
-  SowRepository
+  SowRepository,
+  FundingRepository
 } from '../repositories';
 
 import {Ap} from '../models/ap.model';
@@ -30,10 +31,13 @@ import {Sow} from '../models/sow.model';
 export class ApDappController {
   apRepository: ApRepository;
   sowRepository: SowRepository;
+  fundingRepository: FundingRepository;
 
   constructor() {
     this.sowRepository = new SowRepository();
     this.apRepository = new ApRepository();
+    this.fundingRepository = new FundingRepository();
+    
   }
 
   @post('/ap-dapp/create', {
@@ -55,12 +59,17 @@ export class ApDappController {
     var sowJson = JSON.stringify({title: "New SOW"});
     var sow = await this.sowRepository.create({body: sowJson});
 
+    // Initialize a blank funding entry associated with this AP
+    var fundingJson = JSON.stringify({name: "New Funding"});
+    var funding = await this.fundingRepository.create({body: fundingJson});
+
     // Document the structure of the JSON returned from the sow repository here 
     // console.log("Returned sow:" + JSON.stringify(sow));
 
     // Update the AP with the new SOW ID
     ap.sowid = sow["obj"].id;
-    
+    //ap.fundingId = funding["obj"].id; 
+
     // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
     return await this.apRepository.create({body: ap});
   }
