@@ -18,7 +18,15 @@ import {Filter} from '@loopback/repository';
 import {
   ApRepository,
   SowRepository,
-  FundingRepository
+  FundingRepository,
+  IgceRepository,
+  FormsRepository,
+  SectionsRepository,
+  ClausesRepository,
+  ClinRepository,
+  SlinRepository,
+  EvaluationCriteriaRepository,
+  RequisitionRequestFormRepository,
 } from '../repositories';
 
 import {Ap} from '../models/ap.model';
@@ -32,12 +40,27 @@ export class ApDappController {
   apRepository: ApRepository;
   sowRepository: SowRepository;
   fundingRepository: FundingRepository;
+  igceRepository: IgceRepository;
+  formsRepository: FormsRepository;
+  sectionsRepository: SectionsRepository;
+  clausesRepository: ClausesRepository;
+  clinRepository: ClinRepository;
+  slinRepository: SlinRepository;
+  evaluationCriteriaRepository: EvaluationCriteriaRepository;
+  requisitionRequestFormRepository: RequisitionRequestFormRepository;
 
   constructor() {
     this.sowRepository = new SowRepository();
     this.apRepository = new ApRepository();
     this.fundingRepository = new FundingRepository();
-    
+    this.igceRepository = new IgceRepository();
+    this.formsRepository = new FormsRepository();
+    this.sectionsRepository = new SectionsRepository();
+    this.clausesRepository = new ClausesRepository();
+    this.clinRepository = new ClinRepository();
+    this.slinRepository = new SlinRepository();
+    this.evaluationCriteriaRepository = new EvaluationCriteriaRepository();
+    this.requisitionRequestFormRepository = new RequisitionRequestFormRepository();
   }
 
   @post('/ap-dapp/create', {
