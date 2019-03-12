@@ -78,7 +78,7 @@ export class ApDappController {
     var ap_no:string = "AP" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     ap.ap_no = ap_no;
      // Initialize the blank SOW associated with this AP
-    var sowJson = JSON.stringify({title: "New SOW"});
+    var sowJson = JSON.stringify({backgroundStatement: "New SOW"});
     var sow = await this.sowRepository.create({body: sowJson});
     // Initialize a blank funding entry associated with this AP
     var fundingJson = JSON.stringify({name: "New Funding"});
@@ -102,7 +102,7 @@ export class ApDappController {
     },
   })
   async updateSow(@param.path.string('ap_no') ap_no: string, @requestBody() sow: Sow): Promise<void> {
-    console.log("Updating sow: " + sow.title);
+    console.log("Updating sow: " + sow.backgroundStatement);
 
     // Returns raw JSON
     // Right now, this find is returning every AP - there is a bug in the WHERE filter

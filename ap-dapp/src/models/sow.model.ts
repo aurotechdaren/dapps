@@ -12,7 +12,17 @@ export class Sow extends Entity {
   @property({
     type: 'string',
   })
-  title?: string;
+  performanceWorkStatement?: string;
+
+  @property({
+    type: 'string',
+  })
+  backgroundStatement?: string;
+
+  @property({
+    type: 'string',
+  })
+  contractAdministration?: string;
 
 
   constructor(data?: Partial<Sow>) {
