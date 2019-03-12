@@ -12,7 +12,7 @@ export class Ap extends Entity {
   @property({
     type: 'string',
   })
-  apid?: string;
+  ap_no?: string;
 
   @property({
     type: 'string',

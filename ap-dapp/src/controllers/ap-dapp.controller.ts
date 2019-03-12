@@ -75,8 +75,8 @@ export class ApDappController {
   async create(@requestBody({required: false}) ap: Ap): Promise<Ap> {
 
     // Generate a fake AP ID.  Utimately this will come from a service
-    var apid:string = "AP" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    ap.apid = apid;
+    var ap_no:string = "AP" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    ap.ap_no = ap_no;
      // Initialize the blank SOW associated with this AP
     var sowJson = JSON.stringify({title: "New SOW"});
     var sow = await this.sowRepository.create({body: sowJson});
@@ -94,25 +94,25 @@ export class ApDappController {
     return await this.apRepository.create({body: ap});
   }
 
-  @put('/ap-dapp/ap/{apid}/updateSow', {
+  @put('/ap-dapp/ap/{ap_no}/updateSow', {
     responses: {
       '204': {
         description: 'Sow PUT success',
       },
     },
   })
-  async updateSow(@param.path.string('apid') apid: string, @requestBody() sow: Sow): Promise<void> {
+  async updateSow(@param.path.string('ap_no') ap_no: string, @requestBody() sow: Sow): Promise<void> {
     console.log("Updating sow: " + sow.title);
 
     // Returns raw JSON
     // Right now, this find is returning every AP - there is a bug in the WHERE filter
     // Need to correct it, but for now we'll just take the first AP we find
-    let ap = await this.apRepository.find(apid);
+    let ap = await this.apRepository.find(ap_no);
 
     // Need lots of error handling edge case testing around this
     console.log(JSON.stringify(ap));
     let sowid: String = ap[0].sowid;
-    console.log("Found ap for: " + apid + ", sowid = " + sowid);
+    console.log("Found ap for: " + ap_no + ", sowid = " + sowid);
 
     // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
     // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)

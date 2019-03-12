@@ -26,7 +26,7 @@ export const apDappDefinition = {
           },
           parameters: [
               {
-                  name: "apid",
+                  name: "ap_no",
                   description:
                     'The apId to use when retrieving data from the underlying microservices.',
                   in: 'path',
