@@ -77,15 +77,12 @@ export class ApDappController {
     // Generate a fake AP ID.  Utimately this will come from a service
     var apid:string = "AP" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     ap.apid = apid;
-
-    // Initialize the blank SOW associated with this AP
+     // Initialize the blank SOW associated with this AP
     var sowJson = JSON.stringify({title: "New SOW"});
     var sow = await this.sowRepository.create({body: sowJson});
-
     // Initialize a blank funding entry associated with this AP
     var fundingJson = JSON.stringify({name: "New Funding"});
     var funding = await this.fundingRepository.create({body: fundingJson});
-
     // Document the structure of the JSON returned from the sow repository here 
     // console.log("Returned sow:" + JSON.stringify(sow));
 

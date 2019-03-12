@@ -37,7 +37,7 @@ export const fundingDefinition = {
           "FundingController"
         ],
         "x-controller-name": "FundingController",
-        "x-operation-name": "find"
+        "operationId": "find"
       },
       "patch": {
         "consumes": [
@@ -77,7 +77,7 @@ export const fundingDefinition = {
           "FundingController"
         ],
         "x-controller-name": "FundingController",
-        "x-operation-name": "updateAll"
+        "operationId": "updateAll"
       },
       "post": {
         "consumes": [
@@ -139,7 +139,7 @@ export const fundingDefinition = {
           "FundingController"
         ],
         "x-controller-name": "FundingController",
-        "x-operation-name": "count"
+        "operationId": "count"
       }
     },
     "/funding/{id}": {
@@ -161,7 +161,7 @@ export const fundingDefinition = {
           "FundingController"
         ],
         "x-controller-name": "FundingController",
-        "x-operation-name": "deleteById"
+        "operationId": "deleteById"
       },
       "get": {
         "produces": [
@@ -187,7 +187,7 @@ export const fundingDefinition = {
           "FundingController"
         ],
         "x-controller-name": "FundingController",
-        "x-operation-name": "findById"
+        "operationId": "findById"
       },
       "patch": {
         "consumes": [
@@ -218,7 +218,7 @@ export const fundingDefinition = {
           "FundingController"
         ],
         "x-controller-name": "FundingController",
-        "x-operation-name": "updateById"
+        "operationId": "updateById"
       },
       "put": {
         "consumes": [
@@ -249,7 +249,7 @@ export const fundingDefinition = {
           "FundingController"
         ],
         "x-controller-name": "FundingController",
-        "x-operation-name": "replaceById"
+        "operationId": "replaceById"
       }
     },
     "/ping": {
@@ -290,17 +290,41 @@ export const fundingDefinition = {
           "PingController"
         ],
         "x-controller-name": "PingController",
-        "x-operation-name": "ping"
+        "operationId": "ping"
       }
     }
   },
   "definitions": {
     "Funding": {
       "properties": {
+        "budgetingAndFunding": {
+          "type": "string"
+        },
+        "compatibility": {
+          "type": "string"
+        },
+        "constraints": {
+          "type": "string"
+        },
+        "cost": {
+          "type": "string"
+        },
+        "estimateCurrentYearFunding": {
+          "type": "string"
+        },
         "id": {
           "type": "string"
         },
+        "isCompetitive": {
+          "type": "string"
+        },
         "name": {
+          "type": "string"
+        },
+        "priceTechnicalTradeOffAnalysis": {
+          "type": "string"
+        },
+        "tradeOffs": {
           "type": "string"
         }
       },
@@ -312,4 +336,5 @@ export const fundingDefinition = {
   },
   "x-components": {}
 }
+
 
