@@ -27,6 +27,7 @@ import {
   SlinRepository,
   EvaluationCriteriaRepository,
   RequisitionRequestFormRepository,
+  BlockchainRepository,
 } from '../repositories';
 
 import {Ap} from '../models/ap.model';
@@ -48,7 +49,7 @@ export class ApDappController {
   slinRepository: SlinRepository;
   evaluationCriteriaRepository: EvaluationCriteriaRepository;
   requisitionRequestFormRepository: RequisitionRequestFormRepository;
-
+  blockchainRepository: BlockchainRepository;
   constructor() {
     this.sowRepository = new SowRepository();
     this.apRepository = new ApRepository();
@@ -61,6 +62,7 @@ export class ApDappController {
     this.slinRepository = new SlinRepository();
     this.evaluationCriteriaRepository = new EvaluationCriteriaRepository();
     this.requisitionRequestFormRepository = new RequisitionRequestFormRepository();
+    this.blockchainRepository = new BlockchainRepository();
   }
 
   @post('/ap-dapp/create', {
@@ -117,6 +119,23 @@ export class ApDappController {
     // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
     // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)
     await this.sowRepository.replaceById({body: sow, id: sowid} );
+  }
+
+
+  @get('/ap-dapp/assetFromBlockChain/{asset_no}', {
+    responses: {
+      '204': {
+        description: 'Blockchain GET success',
+      },
+    },
+  })
+  async assetFromBlockChain(@param.path.string('asset_no') asset_no: string): Promise<void> {
+    console.log("Retreiving asset from blockchain for: " + asset_no);
+
+    // Returns raw JSON
+    // Right now, this find is returning every AP - there is a bug in the WHERE filter
+    // Need to correct it, but for now we'll just take the first AP we find
+  return await this.blockchainRepository.find(asset_no);
   }
 
 }

@@ -9,3 +9,4 @@ export * from './forms/forms.repository';
 export * from './sections/sections.repository';
 export * from './evaluationcriteria/evaluationcriteria.repository';
 export * from './requisitionrequestform/requisitionrequestform.repository';
+export * from './blockchain/blockchain.repository';
