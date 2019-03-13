@@ -90,13 +90,14 @@ export class ApDappController {
 
     // Update the AP with the new SOW ID
     ap.sowid = sow["obj"].id;
+    ap.fundingId = funding["obj"].id;
     //ap.fundingId = funding["obj"].id; 
 
     // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
     return await this.apRepository.create({body: ap});
   }
 
-  @put('/ap-dapp/ap/{ap_no}/updateSow', {
+  @patch('/ap-dapp/ap/{ap_no}/updateSow', {
     responses: {
       '204': {
         description: 'Sow PUT success',

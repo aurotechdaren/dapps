@@ -450,6 +450,9 @@ export const apDefinition = {
           "sowid": {
             "type": "string"
           },
+          "fundingId": {
+            "type": "string"
+          },
           "startDate": {
             "type": "string"
           },
