@@ -24,5 +24,12 @@ export class FundingRepository {
     // sowId and the sow JSON in the body 
     return await this.model.replaceById(fundingHttpParams);
   }
+
+  async updateById(fundingHttpParams: any): Promise <any> {
+
+    // Documented in the ap-dapp controller - the sowHttpParams is a concatenation of:
+    // sowId and the sow JSON in the body 
+    return await this.model.updateById(fundingHttpParams);
+  }
 }
 /* tslint:enable no-any */

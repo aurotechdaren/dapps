@@ -32,6 +32,7 @@ import {
 
 import {Ap} from '../models/ap.model';
 import {Sow} from '../models/sow.model';
+import {Funding} from '../models/funding.model';
 
 
 /* tslint:disable no-any */
@@ -97,10 +98,65 @@ export class ApDappController {
     return await this.apRepository.create({body: ap});
   }
 
+  @get('/ap-dapp/ap/{ap_no}', {
+    responses: {
+      '204': {
+        description: 'Ap GET success',
+      },
+    },
+  })
+  async getAp(@param.path.string('ap_no') ap_no: string): Promise<void> {
+    console.log("Get Ap: " + ap_no);
+
+    // Returns raw JSON
+    // Right now, this find is returning every AP - there is a bug in the WHERE filter
+    // Need to correct it, but for now we'll just take the first AP we find
+    let ap = await this.apRepository.find(ap_no);
+
+    // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
+    // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)
+    return ap;
+  }
+
+  @get('/ap-dapp/ap', {
+    responses: {
+      '204': {
+        description: 'Ap GET All success',
+      },
+    },
+  })
+  async getAllAp(@param.query.string('filter') filter: string): Promise<void> {
+    console.log("Get Ap filter: " + filter);
+
+    // Returns raw JSON
+    // Right now, this find is returning every AP - there is a bug in the WHERE filter
+    // Need to correct it, but for now we'll just take the first AP we find
+    let ap = await this.apRepository.model.find(JSON.parse(filter));
+
+    // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
+    // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)
+    return ap;
+  }
+
+  @get('/ap-dapp/apCount', {
+    responses: {
+      '204': {
+        description: 'Ap GET count success',
+      },
+    },
+  })
+  async getApCount(@param.query.string('where') where: string): Promise<void> {
+    console.log("Get Ap count where: " + where);
+    let response = await this.apRepository.model.count({where:where});
+
+   return response.obj.count;
+  }
+
+
   @patch('/ap-dapp/ap/{ap_no}/updateSow', {
     responses: {
       '204': {
-        description: 'Sow PUT success',
+        description: 'Sow PATCH success',
       },
     },
   })
@@ -121,6 +177,33 @@ export class ApDappController {
     // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)
     await this.sowRepository.updateById({body: sow, id: sowid} );
   }
+
+  @patch('/ap-dapp/ap/{ap_no}/updateFunding', {
+    responses: {
+      '204': {
+        description: 'Funding PATCH success',
+      },
+    },
+  })
+
+  async updateFunding(@param.path.string('ap_no') ap_no: string, @requestBody() funding: Funding): Promise<void> {
+    console.log("Updating funding: " + funding);
+
+    // Returns raw JSON
+    // Right now, this find is returning every AP - there is a bug in the WHERE filter
+    // Need to correct it, but for now we'll just take the first AP we find
+    let ap = await this.apRepository.find(ap_no);
+
+    // Need lots of error handling edge case testing around this
+    console.log(JSON.stringify(ap));
+    let fundingId: String = ap[0].fundingId;
+    console.log("Found ap for: " + ap_no + ", fundingId = " + fundingId);
+
+    // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
+    // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)
+    await this.fundingRepository.updateById({body: funding, id: fundingId} );
+  }
+
 
 
   @get('/ap-dapp/assetFromBlockChain/{asset_no}', {
