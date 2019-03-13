@@ -9,17 +9,17 @@ export class ApRepository {
     this.model = dataSource.createModel('ApService', {});
   }
 
-  async find(apid : String): Promise<any> {
-    console.log("(ap.repository) Got apid: " + apid);
-    console.log("Sending filter as: " + JSON.stringify({filter: {WHERE:{"apid":apid}}}) );
+  async find(ap_no : String): Promise<any> {
+    console.log("(ap.repository) Got ap_no: " + ap_no);
+    console.log("Sending filter as: " + JSON.stringify({filter: {WHERE:{"ap_no":ap_no}}}) );
     
     let response;
 
     try {
-     response = await this.model.find({filter: `{"where": {"apid":"${apid}"}}`});
+     response = await this.model.find({filter: `{"where": {"ap_no":"${ap_no}"}}`});
     
     } catch(err) {
-      console.log("ERROR: " + err);
+      console.log("ERROR: " + err.message);
     }
 
     //console.log("(ap repository): apid search returned" + JSON.stringify(response.obj));

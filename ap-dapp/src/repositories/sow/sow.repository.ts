@@ -19,11 +19,11 @@ export class SowRepository {
     return await this.model.create(sowInstance);
   }
 
-  async replaceById(sowHttpParams: any): Promise <any> {
+  async updateById(sowHttpParams: any): Promise <any> {
 
     // Documented in the ap-dapp controller - the sowHttpParams is a concatenation of:
     // sowId and the sow JSON in the body 
-    return await this.model.replaceById(sowHttpParams);
+    return await this.model.updateById(sowHttpParams);
   }
 }
 /* tslint:enable no-any */

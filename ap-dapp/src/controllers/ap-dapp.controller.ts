@@ -118,7 +118,7 @@ export class ApDappController {
 
     // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
     // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)
-    await this.sowRepository.replaceById({body: sow, id: sowid} );
+    await this.sowRepository.updateById({body: sow, id: sowid} );
   }
 
 
