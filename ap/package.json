@@ -27,7 +27,7 @@
     "posttest": "npm run lint",
     "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
     "docker:build": "docker build -t ap .",
-    "docker:run": "docker run --name ap -t -p 3001:3001 -d ap",
+    "docker:run": "docker run --name ap -t -p 4001:4001 -d ap",
     "docker:remove": "docker stop ap && docker rm ap && docker rmi ap",
     "migrate": "node ./dist/migrate",
     "prestart": "npm run build",
