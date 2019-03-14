@@ -25,10 +25,18 @@ export class BlockchainRepository {
     return (response.obj);
   }
 
-  // async create(sowInstance: any): Promise<any> {
+  async createAP(blockchainInstance: any): Promise<any> {
+   return await this.model.createAP(blockchainInstance);
+  }
+
+  async initiateAP(blockchainInstance: any): Promise<any> {
+    return await this.model.createapInitiate(blockchainInstance);
+  }
+
+  async createAPHash(blockchainInstance: any): Promise<any> {
     
-  //   return await this.model.create(sowInstance);
-  // }
+    return await this.model.createapHash(blockchainInstance);
+  }
 
   // async replaceById(sowHttpParams: any): Promise <any> {
 

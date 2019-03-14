@@ -145,10 +145,18 @@ export class ApDappController {
       },
     },
   })
+
   async getApCount(@param.query.string('where') where: string): Promise<void> {
     console.log("Get Ap count where: " + where);
-    let response = await this.apRepository.model.count({where:where});
-
+    let response 
+    try {
+      response = await this.apRepository.model.count({where:where});
+     
+     } catch(err) {
+      console.error(err);
+       console.log("ERROR: " + err.info);
+       return response;
+     }
    return response.obj.count;
   }
 
@@ -203,6 +211,7 @@ export class ApDappController {
      response =   await this.apRepository.updateById({body: ap, id: apid} );
     
     } catch(err) {
+      console.error(err);
       console.log("ERROR: " + err.info);
     }
    return response; 
@@ -249,7 +258,125 @@ export class ApDappController {
     // Returns raw JSON
     // Right now, this find is returning every AP - there is a bug in the WHERE filter
     // Need to correct it, but for now we'll just take the first AP we find
+
   return await this.blockchainRepository.find(asset_no);
+  }
+
+
+
+
+  @put('/ap-dapp/ap/{ap_no}/acceptAp', {
+    responses: {
+      '204': {
+        description: 'Blockchain accept put success',
+      },
+    },
+  })
+  async acceptAp(@param.path.string('ap_no') ap_no: string, @requestBody() inputAp: Ap): Promise<void> {
+    console.log("Updating acceptAp: " + inputAp);
+
+    // Returns updated JSON
+    let apResponse = await this.apRepository.find(ap_no);
+
+    let apid: String = apResponse[0].id;
+    console.log("Found ap for: " + ap_no + ", apid = " + apid);
+    let response;
+
+    try {
+
+      let assetAP = 
+       { '$class': 'org.auro.hhsnet.AP',
+         'apId': ap_no,
+         'apName': inputAp.description,
+         'apStatus': inputAp.status,
+         'apFormId': '5bf38304a0ab7d1b9c3c6d85',
+         'apSolNo': 'HHSABC19A3806',
+         'apSelection':'new requirement',
+         'apPoc':'resource:org.auro.hhsnet.CO#'+inputAp.initaitedBy,
+         'apCatalogue':'Catalogue 1',
+         'apITorNonIT': 'IT',
+         'apSimilarContract':'GDFDSG6SHDFH',
+         'apProductOrService':'product',
+         'apInitaitedBy':'resource:org.auro.hhsnet.CO#'+inputAp.initaitedBy,
+         'apHashVal':' ',
+         'owner': 'resource:org.auro.hhsnet.CO#'+inputAp.initaitedBy }
+       
+        // console.log(JSON.parse(JSON.stringify(assetAP)));
+       
+         //create Asset in blockchain
+      let createAPResponse = await this.blockchainRepository.createAP({data: JSON.parse(JSON.stringify(assetAP))});
+      //console.log("createAPResponse: " + createAPResponse.obj);
+    
+      //Generate hash in blockchain
+
+      let hashAP = 
+       { '$class': 'org.auro.hhsnet.apHash',
+         'ap': 'resource:org.auro.hhsnet.AP#'+ ap_no
+      }
+
+      let createAPHashResponse =  await this.blockchainRepository.createAPHash({data: JSON.parse(JSON.stringify(hashAP))});
+      //console.log("createAPHashResponse: " + createAPHashResponse.obj);
+    
+          //Update status in AP
+     response =   await this.apRepository.updateById({body: inputAp, id: apid} );
+  
+    
+    } catch(err) {
+      console.error(err);
+      console.log("ERROR: " + err.info + err.message);
+    }
+   return response; 
+  }
+
+
+  @put('/ap-dapp/ap/{ap_no}/initiateAp', {
+    responses: {
+      '204': {
+        description: 'Blockchain initiate put success',
+      },
+    },
+  })
+  async initiateAp(@param.path.string('ap_no') ap_no: string, @requestBody() inputAp: Ap): Promise<void> {
+    console.log("Updating acceptAp: " + inputAp);
+
+    // Returns updated JSON
+    let apResponse = await this.apRepository.find(ap_no);
+
+    let apid: String = apResponse[0].id;
+    console.log("Found ap for: " + ap_no + ", apid = " + apid);
+    let response;
+
+    try {
+
+      let initiateAP = 
+       { '$class': 'org.auro.hhsnet.apInitiate',
+          'ap': 'resource:org.auro.hhsnet.AP#'+ inputAp.ap_no }
+       
+        // console.log(JSON.parse(JSON.stringify(assetAP)));
+       
+         //initiate Asset in blockchain
+      let initiateAPResponse = await this.blockchainRepository.initiateAP({data: JSON.parse(JSON.stringify(initiateAP))});
+      console.log("initiateAPResponse: " + initiateAPResponse.obj);
+    
+      //Get hash from blockchain
+
+      let hashAP = 
+       { '$class': 'org.auro.hhsnet.apHash',
+         'ap': 'resource:org.auro.hhsnet.AP#'+ ap_no
+      }
+
+      let hashResponse =  await this.blockchainRepository.find(ap_no);
+      console.log("hashResponse: " + hashResponse);
+    
+          //Update status in AP
+     response =   await this.apRepository.updateById({body: inputAp, id: apid} );
+  
+    
+    } catch(err) {
+      console.error(err);
+      console.log("ERROR: " + err.info + err.message);
+    }
+   return response; 
   }
 
 }
