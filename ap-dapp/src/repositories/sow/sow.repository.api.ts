@@ -4,7 +4,7 @@ export const sowDefinition = {
     "title": "LoopBack Application",
     "version": "1.0.0"
   },
-  "host": "localhost:3011",
+  "host": "127.0.0.1:3011",
   "basePath": "/",
   "schemes": [
     "http"
