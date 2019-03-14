@@ -4,7 +4,7 @@ export const fundingDefinition = {
     "title": "LoopBack Application",
     "version": "1.0.0"
   },
-  "host": "localhost:3006",
+  "host": "127.0.0.1:3006",
   "basePath": "/",
   "schemes": [
     "http"
