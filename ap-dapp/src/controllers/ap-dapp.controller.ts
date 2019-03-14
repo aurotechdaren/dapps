@@ -152,7 +152,6 @@ export class ApDappController {
    return response.obj.count;
   }
 
-
   @patch('/ap-dapp/ap/{ap_no}/updateSow', {
     responses: {
       '204': {
@@ -178,7 +177,38 @@ export class ApDappController {
     await this.sowRepository.updateById({body: sow, id: sowid} );
   }
 
-  @patch('/ap-dapp/ap/{ap_no}/updateFunding', {
+  @patch('/ap-dapp/ap/{ap_no}/updateAp', {
+    responses: {
+      '204': {
+        description: 'Ap PATCH success',
+      },
+    },
+  })
+  async updateAp(@param.path.string('ap_no') ap_no: string, @requestBody() ap: Ap): Promise<void> {
+    console.log("Updating Ap: " + ap);
+
+    // Returns raw JSON
+    // Right now, this find is returning every AP - there is a bug in the WHERE filter
+    // Need to correct it, but for now we'll just take the first AP we find
+    let apResponse = await this.apRepository.find(ap_no);
+
+    // Need lots of error handling edge case testing around this
+    //console.log(JSON.stringify(apResponse));
+    let apid: String = apResponse[0].id;
+    console.log("Found ap for: " + ap_no + ", apid = " + apid);
+
+    let response;
+
+    try {
+     response =   await this.apRepository.updateById({body: ap, id: apid} );
+    
+    } catch(err) {
+      console.log("ERROR: " + err.info);
+    }
+   return response; 
+  }
+
+ @patch('/ap-dapp/ap/{ap_no}/updateFunding', {
     responses: {
       '204': {
         description: 'Funding PATCH success',

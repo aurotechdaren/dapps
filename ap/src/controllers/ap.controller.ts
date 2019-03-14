@@ -96,7 +96,7 @@ export class ApController {
       },
     },
   })
-  async findById(@param.path.number('id') id: string): Promise<Ap> {
+  async findById(@param.path.string('id') id: string): Promise<Ap> {
     return await this.apRepository.findById(id);
   }
 
@@ -108,7 +108,7 @@ export class ApController {
     },
   })
   async updateById(
-    @param.path.number('id') id: string,
+    @param.path.string('id') id: string,
     @requestBody() ap: Ap,
   ): Promise<void> {
     await this.apRepository.updateById(id, ap);
@@ -122,7 +122,7 @@ export class ApController {
     },
   })
   async replaceById(
-    @param.path.number('id') id: string,
+    @param.path.string('id') id: string,
     @requestBody() ap: Ap,
   ): Promise<void> {
     await this.apRepository.replaceById(id, ap);
@@ -135,7 +135,7 @@ export class ApController {
       },
     },
   })
-  async deleteById(@param.path.number('id') id: string): Promise<void> {
+  async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.apRepository.deleteById(id);
   }
 }

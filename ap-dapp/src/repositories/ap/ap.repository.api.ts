@@ -149,7 +149,7 @@ export const apDefinition = {
               "in": "path",
               "name": "id",
               "required": true,
-              "type": "number"
+              "type": "string"
             }
           ],
           "responses": {
@@ -172,7 +172,7 @@ export const apDefinition = {
               "in": "path",
               "name": "id",
               "required": true,
-              "type": "number"
+              "type": "string"
             }
           ],
           "responses": {
@@ -198,7 +198,7 @@ export const apDefinition = {
               "in": "path",
               "name": "id",
               "required": true,
-              "type": "number"
+              "type": "string"
             },
             {
               "in": "body",
@@ -229,7 +229,7 @@ export const apDefinition = {
               "in": "path",
               "name": "id",
               "required": true,
-              "type": "number"
+              "type": "string"
             },
             {
               "in": "body",

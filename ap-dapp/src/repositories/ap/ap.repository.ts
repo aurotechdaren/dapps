@@ -1,5 +1,6 @@
 import {dataSource} from './ap.swagger.datasource';
 import {Filter} from '@loopback/repository';
+import {Ap} from '../../models/ap.model';
 
 /* tslint:disable no-any */
 export class ApRepository {
@@ -29,6 +30,22 @@ export class ApRepository {
   async create(apInstance: any): Promise<any> {
 
     return await this.model.create(apInstance);
+  }
+
+  async updateById(apHttpParams: any): Promise <any> {
+
+    // Documented in the ap-dapp controller - the apHttpParams is a concatenation of:
+    // sowId and the sow JSON in the body 
+    console.log("In AP repository updated")
+    let response;
+
+    try {
+     response =  await this.model.updateById(apHttpParams);
+    
+    } catch(err) {
+      console.log("ERROR: " + err.message);
+    }
+   return response;
   }
 }
 /* tslint:enable no-any */
