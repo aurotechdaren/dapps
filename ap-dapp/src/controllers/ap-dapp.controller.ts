@@ -18,22 +18,16 @@ import {Filter} from '@loopback/repository';
 import {
   ApRepository,
   SowRepository,
-  FundingRepository,
   IgceRepository,
   FormsRepository,
   SectionsRepository,
   ClausesRepository,
-  ClinRepository,
-  SlinRepository,
   EvaluationCriteriaRepository,
-  RequisitionRequestFormRepository,
   BlockchainRepository,
 } from '../repositories';
 
 import {Ap} from '../models/ap.model';
 import {Sow} from '../models/sow.model';
-import {Funding} from '../models/funding.model';
-
 
 /* tslint:disable no-any */
 
@@ -41,28 +35,20 @@ import {Funding} from '../models/funding.model';
 export class ApDappController {
   apRepository: ApRepository;
   sowRepository: SowRepository;
-  fundingRepository: FundingRepository;
   igceRepository: IgceRepository;
   formsRepository: FormsRepository;
   sectionsRepository: SectionsRepository;
   clausesRepository: ClausesRepository;
-  clinRepository: ClinRepository;
-  slinRepository: SlinRepository;
   evaluationCriteriaRepository: EvaluationCriteriaRepository;
-  requisitionRequestFormRepository: RequisitionRequestFormRepository;
   blockchainRepository: BlockchainRepository;
   constructor() {
     this.sowRepository = new SowRepository();
     this.apRepository = new ApRepository();
-    this.fundingRepository = new FundingRepository();
     this.igceRepository = new IgceRepository();
     this.formsRepository = new FormsRepository();
     this.sectionsRepository = new SectionsRepository();
     this.clausesRepository = new ClausesRepository();
-    this.clinRepository = new ClinRepository();
-    this.slinRepository = new SlinRepository();
     this.evaluationCriteriaRepository = new EvaluationCriteriaRepository();
-    this.requisitionRequestFormRepository = new RequisitionRequestFormRepository();
     this.blockchainRepository = new BlockchainRepository();
   }
 
@@ -85,13 +71,13 @@ export class ApDappController {
     var sow = await this.sowRepository.create({body: sowJson});
     // Initialize a blank funding entry associated with this AP
     var fundingJson = JSON.stringify({name: "New Funding"});
-    var funding = await this.fundingRepository.create({body: fundingJson});
+   // var funding = await this.fundingRepository.create({body: fundingJson});
     // Document the structure of the JSON returned from the sow repository here 
     // console.log("Returned sow:" + JSON.stringify(sow));
 
     // Update the AP with the new SOW ID
     ap.sowid = sow["obj"].id;
-    ap.fundingId = funding["obj"].id;
+   //ap.fundingId = funding["obj"].id;
     //ap.fundingId = funding["obj"].id; 
 
     // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
@@ -217,34 +203,7 @@ export class ApDappController {
    return response; 
   }
 
- @patch('/ap-dapp/ap/{ap_no}/updateFunding', {
-    responses: {
-      '204': {
-        description: 'Funding PATCH success',
-      },
-    },
-  })
-
-  async updateFunding(@param.path.string('ap_no') ap_no: string, @requestBody() funding: Funding): Promise<void> {
-    console.log("Updating funding: " + funding);
-
-    // Returns raw JSON
-    // Right now, this find is returning every AP - there is a bug in the WHERE filter
-    // Need to correct it, but for now we'll just take the first AP we find
-    let ap = await this.apRepository.find(ap_no);
-
-    // Need lots of error handling edge case testing around this
-    console.log(JSON.stringify(ap));
-    let fundingId: String = ap[0].fundingId;
-    console.log("Found ap for: " + ap_no + ", fundingId = " + fundingId);
-
-    // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
-    // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)
-    await this.fundingRepository.updateById({body: funding, id: fundingId} );
-  }
-
-
-
+ 
   @get('/ap-dapp/assetFromBlockChain/{asset_no}', {
     responses: {
       '204': {
