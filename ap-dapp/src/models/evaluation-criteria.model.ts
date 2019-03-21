@@ -10,7 +10,7 @@ export class EvaluationCriteria extends Entity {
   id: string;
   @property({
     type: 'string',
-    required: true,
+    required: false,
   })
   description: string;
 

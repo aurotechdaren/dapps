@@ -282,7 +282,7 @@ export class Ap extends Entity {
   @property({
     type: 'string',
   })
-  fundingId?: string;
+  evaluationCriteriaId?: string;
 
   constructor(data?: Partial<Ap>) {
     super(data);

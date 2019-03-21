@@ -62,26 +62,41 @@ export class ApDappController {
   })
 
   async create(@requestBody({required: false}) ap: Ap): Promise<Ap> {
+    
+    let response;
+
+    try {
 
     // Generate a fake AP ID.  Utimately this will come from a service
     var ap_no:string = "AP" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     ap.ap_no = ap_no;
+   
      // Initialize the blank SOW associated with this AP
-    var sowJson = JSON.stringify({backgroundStatement: "New SOW"});
+    var sowJson = JSON.stringify({});
     var sow = await this.sowRepository.create({body: sowJson});
+   
+    var evaluationCriteriaJson = JSON.stringify({});
+    var evaluationCriteria = await this.evaluationCriteriaRepository.create({body: evaluationCriteriaJson});
+   
     // Initialize a blank funding entry associated with this AP
-    var fundingJson = JSON.stringify({name: "New Funding"});
+   // var fundingJson = JSON.stringify({name: "New Funding"});
    // var funding = await this.fundingRepository.create({body: fundingJson});
     // Document the structure of the JSON returned from the sow repository here 
     // console.log("Returned sow:" + JSON.stringify(sow));
 
     // Update the AP with the new SOW ID
     ap.sowid = sow["obj"].id;
+    ap.evaluationCriteriaId = evaluationCriteria["obj"].id;
    //ap.fundingId = funding["obj"].id;
     //ap.fundingId = funding["obj"].id; 
 
     // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
-    return await this.apRepository.create({body: ap});
+    response = await this.apRepository.create({body: ap});
+  } catch(err) {
+    console.error(err);
+    return err;
+   }
+  return response.obj;
   }
 
   @get('/ap-dapp/ap/{ap_no}', {
