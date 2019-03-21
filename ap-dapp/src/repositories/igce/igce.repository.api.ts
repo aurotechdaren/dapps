@@ -297,47 +297,6 @@ export const igceDefinition = {
   "definitions": {
     "Igce": {
       "properties": {
-        "basePeriodCost": {
-          "type": "string"
-        },
-        "basePeriodDate": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        },
-        "optionPeriodCost": {
-          "type": "string"
-        },
-        "otherDirectCosts": {
-          "type": "string"
-        },
-        "periodOfPerformance": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "slinDescription": {
-          "type": "string"
-        },
-        "slinQuantity": {
-          "type": "string"
-        },
-        "slinTotalCost": {
-          "type": "string"
-        },
-        "slinUnitOfMeasure": {
-          "type": "string"
-        },
-        "slinUnitPrice": {
-          "type": "string"
-        },
-        "totalCost": {
-          "type": "string"
-        },
-        "travel": {
-          "type": "string"
-        }
       },
       "title": "Igce"
     }
