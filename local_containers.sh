@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ap-dapp/
+cd dapp-ap/
 npm run docker:remove
 cd ../ap/
 npm run docker:remove
@@ -15,7 +15,7 @@ cd ../sections
 npm run docker:remove
 cd ../sow
 npm run docker:remove
-cd ../ap-dapp
+cd ../dapp-ap
 npm run docker:build
 cd ../ap
 npm run docker:build
@@ -31,7 +31,7 @@ cd ../sections
 npm run docker:build
 cd ../sow
 npm run docker:build
-cd ../ap-dapp
+cd ../dapp-ap
 npm run docker:run
 cd ../ap
 npm run docker:run
