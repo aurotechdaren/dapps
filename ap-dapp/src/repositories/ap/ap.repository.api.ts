@@ -5,7 +5,7 @@ export const apDefinition = {
       "version": "1.0.0"
     },
     "host": "18.206.126.152:4001",
-    "basePath": "/",
+    "basePath": "/ap",
     "schemes": [
       "http"
     ],

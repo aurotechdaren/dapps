@@ -5,7 +5,7 @@ export const evaluationCriteriaDefinition = {
     "version": "1.0.0"
   },
   "host": "18.206.126.152:3004",
-  "basePath": "/",
+  "basePath": "/evaluation-criteria",
   "schemes": [
     "http"
   ],

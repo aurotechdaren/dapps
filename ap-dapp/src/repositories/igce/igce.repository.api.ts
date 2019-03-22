@@ -5,7 +5,7 @@ export const igceDefinition = {
     "version": "1.0.0"
   },
   "host": "18.206.126.152:3007",
-  "basePath": "/",
+  "basePath": "/igce",
   "schemes": [
     "http"
   ],
