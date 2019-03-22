@@ -1,6 +1,0 @@
-{
-  "name": "apTest",
-  "connector": "rest",
-  "baseURL": "/apTest",
-  "crud": true
-}
