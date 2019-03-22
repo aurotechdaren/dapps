@@ -2,7 +2,7 @@
   "name": "sowDs",
   "connector": "mongodb",
   "url": "",
-  "host": "127.0.0.1",
+  "host": "107.22.95.96",
   "port": 27017,
   "user": "",
   "password": "",

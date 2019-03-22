@@ -4,7 +4,7 @@ export const clausesDefinition = {
     "title": "Clauses",
     "version": "1.0.0"
   },
-  "host": "127.0.0.1:3002",
+  "host": "18.206.126.152:3002",
   "basePath": "/",
   "schemes": [
     "http"

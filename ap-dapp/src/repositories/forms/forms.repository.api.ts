@@ -4,7 +4,7 @@ export const formsDefinition = {
     "title": "LoopBack Application",
     "version": "1.0.0"
   },
-  "host": "127.0.0.1:3005",
+  "host": "18.206.126.152:3005",
   "basePath": "/",
   "schemes": [
     "http"

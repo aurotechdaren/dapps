@@ -4,7 +4,7 @@ export const apDefinition = {
       "title": "LoopBack Application",
       "version": "1.0.0"
     },
-    "host": "127.0.0.1:4001",
+    "host": "18.206.126.152:4001",
     "basePath": "/",
     "schemes": [
       "http"

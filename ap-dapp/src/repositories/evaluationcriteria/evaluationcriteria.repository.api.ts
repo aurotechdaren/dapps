@@ -4,7 +4,7 @@ export const evaluationCriteriaDefinition = {
     "title": "LoopBack Application",
     "version": "1.0.0"
   },
-  "host": "127.0.0.1:3004",
+  "host": "18.206.126.152:3004",
   "basePath": "/",
   "schemes": [
     "http"

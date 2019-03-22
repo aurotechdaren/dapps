@@ -4,7 +4,7 @@ export const igceDefinition = {
     "title": "LoopBack Application",
     "version": "1.0.0"
   },
-  "host": "127.0.0.1:3007",
+  "host": "18.206.126.152:3007",
   "basePath": "/",
   "schemes": [
     "http"
