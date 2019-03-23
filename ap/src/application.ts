@@ -24,7 +24,7 @@ export class ApApplication extends BootMixin(
 
     // Customize @loopback/rest-explorer configuration here
     this.bind(RestExplorerBindings.CONFIG).to({
-      path: '/ap/explorer',
+      path: '/ap/ap/explorer',
     });
     this.component(RestExplorerComponent);
 
