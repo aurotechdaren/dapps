@@ -29,7 +29,7 @@ export class ApDappApplication extends BootMixin(
 
     // Customize @loopback/rest-explorer configuration here
     this.bind(RestExplorerBindings.CONFIG).to({
-      path: '/explorer',
+      path: '/dapp-ap/explorer',
     });
     this.component(RestExplorerComponent);
 

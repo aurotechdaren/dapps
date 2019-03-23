@@ -24,7 +24,7 @@ export class FormsApplication extends BootMixin(
 
     // Customize @loopback/rest-explorer configuration here
     this.bind(RestExplorerBindings.CONFIG).to({
-      path: '/explorer',
+      path: '/forms/explorer',
     });
     this.component(RestExplorerComponent);
 

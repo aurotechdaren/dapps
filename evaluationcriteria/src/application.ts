@@ -24,7 +24,7 @@ export class EvaluationcriteriaApplication extends BootMixin(
 
     // Customize @loopback/rest-explorer configuration here
     this.bind(RestExplorerBindings.CONFIG).to({
-      path: '/explorer',
+      path: '/evaluation-criteria/explorer',
     });
     this.component(RestExplorerComponent);
 
