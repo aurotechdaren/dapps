@@ -24,7 +24,7 @@ export class IgceApplication extends BootMixin(
 
     // Customize @loopback/rest-explorer configuration here
     this.bind(RestExplorerBindings.CONFIG).to({
-      path: '/igce/explorer',
+      path: '/explorer-igce',
     });
     this.component(RestExplorerComponent);
 

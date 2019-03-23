@@ -24,7 +24,7 @@ export class SowApplication extends BootMixin(
 
     // Customize @loopback/rest-explorer configuration here
     this.bind(RestExplorerBindings.CONFIG).to({
-      path: '/sow/explorer',
+      path: '/explorer-sow',
     });
     this.component(RestExplorerComponent);
 

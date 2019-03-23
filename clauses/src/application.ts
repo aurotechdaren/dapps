@@ -24,7 +24,7 @@ export class ClausesApplication extends BootMixin(
 
     // Customize @loopback/rest-explorer configuration here
     this.bind(RestExplorerBindings.CONFIG).to({
-      path: '/clauses/explorer',
+      path: '/explorer-clauses',
     });
     this.component(RestExplorerComponent);
 
