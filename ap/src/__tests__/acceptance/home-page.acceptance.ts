@@ -23,7 +23,7 @@ describe('HomePage', () => {
 
   it('exposes self-hosted explorer', async () => {
     await client
-      .get('/ap/ap/explorer/')
+      .get('/explorer-ap/')
       .expect(200)
       .expect('Content-Type', /text\/html/)
       .expect(/<title>LoopBack API Explorer/);
