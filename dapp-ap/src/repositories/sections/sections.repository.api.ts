@@ -5,7 +5,7 @@ export const sectionsDefinition = {
     "version": "1.0.0"
   },
   "host": "18.206.126.152:8000",
-  "basePath": "/sections",
+  "basePath": "/",
   "schemes": [
     "http"
   ],
