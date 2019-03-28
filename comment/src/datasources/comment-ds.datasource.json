@@ -1,0 +1,10 @@
+{
+  "name": "commentDs",
+  "connector": "mongodb",
+  "url": "",
+  "host": "107.22.95.96",
+  "port": 27017,
+  "user": "",
+  "password": "",
+  "database": "accelerate-ap"
+}

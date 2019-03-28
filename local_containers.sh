@@ -15,7 +15,11 @@ cd ../sections
 npm run docker:remove
 cd ../sow
 npm run docker:remove
+cd ../comment
+npm run docker:remove
 cd ../dapp-ap
+npm run docker:build
+cd ../comment
 npm run docker:build
 cd ../ap
 npm run docker:build
@@ -46,5 +50,7 @@ npm run docker:run
 cd ../sections
 npm run docker:run
 cd ../sow
+npm run docker:run
+cd ../comment
 npm run docker:run
 
