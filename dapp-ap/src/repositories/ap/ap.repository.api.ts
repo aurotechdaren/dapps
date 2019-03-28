@@ -467,6 +467,12 @@ export const apDefinition = {
           },
           "typeOfWork": {
             "type": "string"
+          },
+          "requirementsType": {
+            "type": "string"
+          },
+          "productKind": {
+            "type": "string"
           }
         },
         "title": "Ap"

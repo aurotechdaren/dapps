@@ -277,6 +277,16 @@ export class Ap extends Entity {
   @property({
     type: 'string',
   })
+  requirementsType?: string;
+
+  @property({
+    type: 'string',
+  })
+  productKind?: string;
+
+  @property({
+    type: 'string',
+  })
   sowid?: string;
 
   @property({
