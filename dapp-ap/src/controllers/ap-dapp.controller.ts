@@ -132,9 +132,10 @@ export class ApDappController {
     // Returns raw JSON
     // Right now, this find is returning every AP - there is a bug in the WHERE filter
     // Need to correct it, but for now we'll just take the first AP we find
-    let ap = await this.apRepository.model.find(JSON.parse(filter));
+    //let ap = await this.apRepository.model.find(JSON.parse(filter));
+    let ap = await this.apRepository.model.find({filter:filter});
 
-    // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
+      // The swagger-client requires that the HTTP body be composed with the 'body' param so that it can be properly extracted
     // In this case, the PUT requires teh sowid as a parameter, and the body content (sow JSON)
     return ap;
   }
