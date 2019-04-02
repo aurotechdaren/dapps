@@ -16,16 +16,15 @@ describe('HomePage', () => {
 
   it('exposes a default home page', async () => {
     await client
-      .get('/explorer')
+      .get('/')
       .expect(200)
       .expect('Content-Type', /text\/html/);
   });
 
   it('exposes self-hosted explorer', async () => {
     await client
-      .get('/explorer')
-      .expect(200)
-      .expect('Content-Type', /text\/html/)
-      .expect(/<title>LoopBack API Explorer/);
+      .get('/explorer-ap')
+      .expect(301)
+      .expect('location', '/explorer-ap/');
   });
 });
