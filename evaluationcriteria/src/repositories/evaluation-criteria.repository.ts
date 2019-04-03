@@ -8,7 +8,8 @@ export class EvaluationCriteriaRepository extends DefaultCrudRepository<
   typeof EvaluationCriteria.prototype.id
 > {
   constructor(
-    @inject('datasources.evaluationCriteriaDs') dataSource: EvaluationCriteriaDsDataSource,
+    @inject('datasources.evaluationCriteriaDs')
+    dataSource: EvaluationCriteriaDsDataSource,
   ) {
     super(EvaluationCriteria, dataSource);
   }

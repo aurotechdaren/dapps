@@ -12,8 +12,14 @@ if (require.main === module) {
         // useful when used with OASGraph to locate your application
         setServersFromRequest: true,
         endpointMapping: {
-          '/openapi-evaluation-criteria.json': {version: '3.0.0', format: 'json'},
-          '/openapi-evaluation-criteria.yaml': {version: '3.0.0', format: 'yaml'},
+          '/openapi-evaluation-criteria.json': {
+            version: '3.0.0',
+            format: 'json',
+          },
+          '/openapi-evaluation-criteria.yaml': {
+            version: '3.0.0',
+            format: 'yaml',
+          },
         },
       },
     },

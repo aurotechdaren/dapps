@@ -22,18 +22,22 @@ import {EvaluationCriteriaRepository} from '../repositories';
 export class EvaluationCriteriaController {
   constructor(
     @repository(EvaluationCriteriaRepository)
-    public evaluationCriteriaRepository : EvaluationCriteriaRepository,
+    public evaluationCriteriaRepository: EvaluationCriteriaRepository,
   ) {}
 
   @post('/evaluation-criteria', {
     responses: {
       '200': {
         description: 'EvaluationCriteria model instance',
-        content: {'application/json': {schema: {'x-ts-type': EvaluationCriteria}}},
+        content: {
+          'application/json': {schema: {'x-ts-type': EvaluationCriteria}},
+        },
       },
     },
   })
-  async create(@requestBody() evaluationCriteria: EvaluationCriteria): Promise<EvaluationCriteria> {
+  async create(
+    @requestBody() evaluationCriteria: EvaluationCriteria,
+  ): Promise<EvaluationCriteria> {
     return await this.evaluationCriteriaRepository.create(evaluationCriteria);
   }
 
@@ -46,7 +50,8 @@ export class EvaluationCriteriaController {
     },
   })
   async count(
-    @param.query.object('where', getWhereSchemaFor(EvaluationCriteria)) where?: Where,
+    @param.query.object('where', getWhereSchemaFor(EvaluationCriteria))
+    where?: Where,
   ): Promise<Count> {
     return await this.evaluationCriteriaRepository.count(where);
   }
@@ -64,7 +69,8 @@ export class EvaluationCriteriaController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(EvaluationCriteria)) filter?: Filter,
+    @param.query.object('filter', getFilterSchemaFor(EvaluationCriteria))
+    filter?: Filter,
   ): Promise<EvaluationCriteria[]> {
     return await this.evaluationCriteriaRepository.find(filter);
   }
@@ -79,20 +85,28 @@ export class EvaluationCriteriaController {
   })
   async updateAll(
     @requestBody() evaluationCriteria: EvaluationCriteria,
-    @param.query.object('where', getWhereSchemaFor(EvaluationCriteria)) where?: Where,
+    @param.query.object('where', getWhereSchemaFor(EvaluationCriteria))
+    where?: Where,
   ): Promise<Count> {
-    return await this.evaluationCriteriaRepository.updateAll(evaluationCriteria, where);
+    return await this.evaluationCriteriaRepository.updateAll(
+      evaluationCriteria,
+      where,
+    );
   }
 
   @get('/evaluation-criteria/{id}', {
     responses: {
       '200': {
         description: 'EvaluationCriteria model instance',
-        content: {'application/json': {schema: {'x-ts-type': EvaluationCriteria}}},
+        content: {
+          'application/json': {schema: {'x-ts-type': EvaluationCriteria}},
+        },
       },
     },
   })
-  async findById(@param.path.string('id') id: string): Promise<EvaluationCriteria> {
+  async findById(
+    @param.path.string('id') id: string,
+  ): Promise<EvaluationCriteria> {
     return await this.evaluationCriteriaRepository.findById(id);
   }
 

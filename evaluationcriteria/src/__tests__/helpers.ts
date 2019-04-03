@@ -4,7 +4,9 @@ import {EvaluationCriteria} from '../models';
  * Generate a complete EvaluationCriteria object for use with tests.
  * @param evaluationCriteria A partial (or complete) EvaluationCriteria object.
  */
-export function givenEvaluationCriteria(evaluationCriteria?: Partial<EvaluationCriteria>) {
+export function givenEvaluationCriteria(
+  evaluationCriteria?: Partial<EvaluationCriteria>,
+) {
   const data = Object.assign(
     {
       description: 'do a thing',
