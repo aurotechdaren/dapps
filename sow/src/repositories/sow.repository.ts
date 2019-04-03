@@ -7,9 +7,7 @@ export class SowRepository extends DefaultCrudRepository<
   Sow,
   typeof Sow.prototype.id
 > {
-  constructor(
-    @inject('datasources.sowDs') dataSource: SowDsDataSource,
-  ) {
+  constructor(@inject('datasources.sowDs') dataSource: SowDsDataSource) {
     super(Sow, dataSource);
   }
 }

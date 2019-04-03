@@ -22,7 +22,7 @@ import {SowRepository} from '../repositories';
 export class SowController {
   constructor(
     @repository(SowRepository)
-    public sowRepository : SowRepository,
+    public sowRepository: SowRepository,
   ) {}
 
   @post('/sow', {

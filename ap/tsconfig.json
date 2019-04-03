@@ -4,5 +4,5 @@
   "compilerOptions": {
     "rootDir": "src"
   },
-  "include": ["src", "../igce/src/__tests__/unit/controllers/igce.controller.unit.ts", "../comment/src/__tests__/unit/controllers/comment.controller.unit.ts", "../forms/src/__tests__/unit/controllers/forms.controller.unit.ts", "../sections/src/__tests__/unit/controllers/sections.controller.unit.ts", "../evaluationcriteria/src/__tests__/unit/controllers/evaluation-criteria.controller.unit.ts", "../clauses/src/__tests__/unit/controllers/clauses.controller.unit.ts", "../sow/src/__tests__/unit/controllers/sow.controller.unit.ts"]
+  "include": ["src"]
 }

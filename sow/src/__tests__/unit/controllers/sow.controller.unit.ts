@@ -38,7 +38,7 @@ describe('SowController (unit)', () => {
       sinon.assert.calledWith(create, aSow);
     });
   });
-  
+
   describe('findSowById', () => {
     it('returns a sow if it exists', async () => {
       findById.resolves(aSowWithId);
@@ -59,13 +59,15 @@ describe('SowController (unit)', () => {
     it('returns empty list if no sows exist', async () => {
       const expected: Sow[] = [];
       find.resolves(expected);
-      expect(await controller.find({where: { id: 'hgfhjfghjfjs'}})).to.eql(expected);
+      expect(await controller.find({where: {id: 'hgfhjfghjfjs'}})).to.eql(
+        expected,
+      );
       sinon.assert.called(find);
     });
 
     it('uses the provided filter', async () => {
-      const filter: Filter = {where: { performanceWorkStatement: 'do a thing'}};
-     find.resolves(aListOfSows);
+      const filter: Filter = {where: {performanceWorkStatement: 'do a thing'}};
+      find.resolves(aListOfSows);
       await controller.find(filter);
       sinon.assert.calledWith(find, filter);
     });
@@ -106,7 +108,9 @@ describe('SowController (unit)', () => {
   describe('updateAll()', () => {
     it('returns a number of sows updated', async () => {
       updateAll.resolves([aListOfSows].length);
-      const where = {performanceWorkStatement: aSowWithId.performanceWorkStatement};
+      const where = {
+        performanceWorkStatement: aSowWithId.performanceWorkStatement,
+      };
       expect(await controller.updateAll(aChangedSow, where)).to.eql(1);
       sinon.assert.calledWith(updateAll, aChangedSow, where);
     });
