@@ -22,7 +22,7 @@ import {ClausesRepository} from '../repositories';
 export class ClausesController {
   constructor(
     @repository(ClausesRepository)
-    public clausesRepository : ClausesRepository,
+    public clausesRepository: ClausesRepository,
   ) {}
 
   @post('/clauses', {

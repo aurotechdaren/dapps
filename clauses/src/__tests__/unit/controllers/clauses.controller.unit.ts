@@ -38,7 +38,7 @@ describe('ClausesController (unit)', () => {
       sinon.assert.calledWith(create, aClauses);
     });
   });
-  
+
   describe('findClausesById', () => {
     it('returns a clauses if it exists', async () => {
       findById.resolves(aClausesWithId);
@@ -59,13 +59,15 @@ describe('ClausesController (unit)', () => {
     it('returns empty list if no clausess exist', async () => {
       const expected: Clauses[] = [];
       find.resolves(expected);
-      expect(await controller.find({where: { id: 'hgfhjfghjfjs'}})).to.eql(expected);
+      expect(await controller.find({where: {id: 'hgfhjfghjfjs'}})).to.eql(
+        expected,
+      );
       sinon.assert.called(find);
     });
 
     it('uses the provided filter', async () => {
-      const filter: Filter = {where: { title: 'do a thing'}};
-     find.resolves(aListOfClausess);
+      const filter: Filter = {where: {title: 'do a thing'}};
+      find.resolves(aListOfClausess);
       await controller.find(filter);
       sinon.assert.calledWith(find, filter);
     });
@@ -74,7 +76,10 @@ describe('ClausesController (unit)', () => {
   describe('replaceClauses', () => {
     it('successfully replaces existing items', async () => {
       replaceById.resolves();
-      await controller.replaceById(aClausesWithId.id as string, aChangedClauses);
+      await controller.replaceById(
+        aClausesWithId.id as string,
+        aChangedClauses,
+      );
       sinon.assert.calledWith(replaceById, aClausesWithId.id, aChangedClauses);
     });
   });

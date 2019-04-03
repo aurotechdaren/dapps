@@ -23,8 +23,8 @@ describe('HomePage', () => {
 
   it('exposes self-hosted explorer', async () => {
     await client
-    .get('/explorer-clauses')
-    .expect(301)
-    .expect('location', '/explorer-clauses/');
+      .get('/explorer-clauses')
+      .expect(301)
+      .expect('location', '/explorer-clauses/');
   });
 });

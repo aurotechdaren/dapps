@@ -5,10 +5,10 @@ export class Clauses extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: true
+    generated: true,
   })
   id: string;
-  
+
   @property({
     type: 'string',
   })
@@ -83,7 +83,6 @@ export class Clauses extends Entity {
     type: 'string',
   })
   thresholdAmt?: string;
-
 
   constructor(data?: Partial<Clauses>) {
     super(data);
