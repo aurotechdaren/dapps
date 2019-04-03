@@ -38,7 +38,7 @@ describe('SectionsController (unit)', () => {
       sinon.assert.calledWith(create, aSections);
     });
   });
-  
+
   describe('findSectionsById', () => {
     it('returns a sections if it exists', async () => {
       findById.resolves(aSectionsWithId);
@@ -59,13 +59,15 @@ describe('SectionsController (unit)', () => {
     it('returns empty list if no sectionss exist', async () => {
       const expected: Sections[] = [];
       find.resolves(expected);
-      expect(await controller.find({where: { id: 'hgfhjfghjfjs'}})).to.eql(expected);
+      expect(await controller.find({where: {id: 'hgfhjfghjfjs'}})).to.eql(
+        expected,
+      );
       sinon.assert.called(find);
     });
 
     it('uses the provided filter', async () => {
-      const filter: Filter = {where: { formid: 'do a thing'}};
-     find.resolves(aListOfSectionss);
+      const filter: Filter = {where: {formid: 'do a thing'}};
+      find.resolves(aListOfSectionss);
       await controller.find(filter);
       sinon.assert.calledWith(find, filter);
     });
@@ -74,15 +76,25 @@ describe('SectionsController (unit)', () => {
   describe('replaceSections', () => {
     it('successfully replaces existing items', async () => {
       replaceById.resolves();
-      await controller.replaceById(aSectionsWithId.id as string, aChangedSections);
-      sinon.assert.calledWith(replaceById, aSectionsWithId.id, aChangedSections);
+      await controller.replaceById(
+        aSectionsWithId.id as string,
+        aChangedSections,
+      );
+      sinon.assert.calledWith(
+        replaceById,
+        aSectionsWithId.id,
+        aChangedSections,
+      );
     });
   });
 
   describe('updateSections', () => {
     it('successfully updates existing items', async () => {
       updateById.resolves();
-      await controller.updateById(aSectionsWithId.id as string, aChangedSections);
+      await controller.updateById(
+        aSectionsWithId.id as string,
+        aChangedSections,
+      );
       sinon.assert.calledWith(updateById, aSectionsWithId.id, aChangedSections);
     });
   });

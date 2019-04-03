@@ -22,7 +22,7 @@ import {SectionsRepository} from '../repositories';
 export class SectionsController {
   constructor(
     @repository(SectionsRepository)
-    public sectionsRepository : SectionsRepository,
+    public sectionsRepository: SectionsRepository,
   ) {}
 
   @post('/sections', {
