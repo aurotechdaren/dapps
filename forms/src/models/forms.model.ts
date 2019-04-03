@@ -5,10 +5,10 @@ export class Forms extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: true
+    generated: true,
   })
   id: string;
-  
+
   @property({
     type: 'string',
   })
@@ -114,7 +114,6 @@ export class Forms extends Entity {
     itemType: 'string',
   })
   excludeClauses?: string[];
-
 
   constructor(data?: Partial<Forms>) {
     super(data);

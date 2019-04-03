@@ -7,9 +7,7 @@ export class FormsRepository extends DefaultCrudRepository<
   Forms,
   typeof Forms.prototype.id
 > {
-  constructor(
-    @inject('datasources.formsDs') dataSource: FormsDsDataSource,
-  ) {
+  constructor(@inject('datasources.formsDs') dataSource: FormsDsDataSource) {
     super(Forms, dataSource);
   }
 }

@@ -22,7 +22,7 @@ import {FormsRepository} from '../repositories';
 export class FormsController {
   constructor(
     @repository(FormsRepository)
-    public formsRepository : FormsRepository,
+    public formsRepository: FormsRepository,
   ) {}
 
   @post('/forms', {

@@ -38,7 +38,7 @@ describe('FormsController (unit)', () => {
       sinon.assert.calledWith(create, aForms);
     });
   });
-  
+
   describe('findFormsById', () => {
     it('returns a forms if it exists', async () => {
       findById.resolves(aFormsWithId);
@@ -59,13 +59,15 @@ describe('FormsController (unit)', () => {
     it('returns empty list if no formss exist', async () => {
       const expected: Forms[] = [];
       find.resolves(expected);
-      expect(await controller.find({where: { id: 'hgfhjfghjfjs'}})).to.eql(expected);
+      expect(await controller.find({where: {id: 'hgfhjfghjfjs'}})).to.eql(
+        expected,
+      );
       sinon.assert.called(find);
     });
 
     it('uses the provided filter', async () => {
-      const filter: Filter = {where: { requisitionNumber: 'do a thing'}};
-     find.resolves(aListOfFormss);
+      const filter: Filter = {where: {requisitionNumber: 'do a thing'}};
+      find.resolves(aListOfFormss);
       await controller.find(filter);
       sinon.assert.calledWith(find, filter);
     });
