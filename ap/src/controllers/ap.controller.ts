@@ -9,7 +9,6 @@ import {
   post,
   param,
   get,
-  getFilterSchemaFor,
   getWhereSchemaFor,
   patch,
   put,
@@ -19,11 +18,10 @@ import {
 import {Ap} from '../models';
 import {ApRepository} from '../repositories';
 
-
 export class ApController {
   constructor(
     @repository(ApRepository)
-    public apRepository : ApRepository,
+    public apRepository: ApRepository,
   ) {}
 
   @post('/ap', {
@@ -35,7 +33,6 @@ export class ApController {
     },
   })
   async create(@requestBody() ap: Ap): Promise<Ap> {
-
     return await this.apRepository.create(ap);
   }
 
@@ -67,10 +64,9 @@ export class ApController {
   })
   async find(
     //@param.query.object('filter', getFilterSchemaFor(Ap)) filter?: Filter,
-    @param.query.string('filter') filter: any
+    @param.query.string('filter') filter?: Filter,
   ): Promise<Ap[]> {
-    console.log("In AP Controller: " + filter );
-    return await this.apRepository.find(JSON.parse(filter));
+    return await this.apRepository.find(filter);
   }
 
   @patch('/ap', {

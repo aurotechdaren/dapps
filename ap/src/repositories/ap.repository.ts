@@ -7,10 +7,7 @@ export class ApRepository extends DefaultCrudRepository<
   Ap,
   typeof Ap.prototype.id
 > {
-  constructor(
-    @inject('datasources.apDs') dataSource: ApDsDataSource,
-  ) {
+  constructor(@inject('datasources.apDs') dataSource: ApDsDataSource) {
     super(Ap, dataSource);
   }
-
 }

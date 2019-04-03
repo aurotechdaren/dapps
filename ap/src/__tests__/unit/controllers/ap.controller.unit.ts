@@ -38,7 +38,7 @@ describe('ApController (unit)', () => {
       sinon.assert.calledWith(create, aAp);
     });
   });
-  
+
   describe('findApById', () => {
     it('returns a ap if it exists', async () => {
       findById.resolves(aApWithId);
@@ -52,21 +52,23 @@ describe('ApController (unit)', () => {
   describe('findAps', () => {
     it('returns multiple aps if they exist', async () => {
       find.resolves(aListOfAps);
-      expect(await controller.find(JSON.stringify({}))).to.eql(aListOfAps);
+      expect(await controller.find({})).to.eql(aListOfAps);
       sinon.assert.called(find);
     });
 
     it('returns empty list if no aps exist', async () => {
       const expected: Ap[] = [];
       find.resolves(expected);
-      expect(await controller.find(JSON.stringify({filter: {where: { id: 'hgfhjfghjfjs'}}}))).to.eql(expected);
+      expect(await controller.find({where: {id: 'hgfhjfghjfjs'}})).to.eql(
+        expected,
+      );
       sinon.assert.called(find);
     });
 
     it('uses the provided filter', async () => {
-      const filter: Filter = {where: { projectTitle: 'do a thing'}};
-     find.resolves(aListOfAps);
-      await controller.find(JSON.stringify(filter));
+      const filter: Filter = {where: {projectTitle: 'do a thing'}};
+      find.resolves(aListOfAps);
+      await controller.find(filter);
       sinon.assert.calledWith(find, filter);
     });
   });
