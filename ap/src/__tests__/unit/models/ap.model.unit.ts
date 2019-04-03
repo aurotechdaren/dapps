@@ -5,19 +5,17 @@ import {Ap} from '../../../models';
 import {givenAp} from '../../helpers';
 
 describe('Ap (unit)', () => {
-  // we recommend to group tests by method names
-  // describe('getFullName()', () => {
-  //   it('uses all three parts when present', () => {
-  //     const person = givenPerson({
-  //       firstname: 'Jane',
-  //       middlename: 'Smith',
-  //       surname: 'Brown',
-  //     });
+  //we recommend to tests by properties
+  describe('getProjectTitle()', () => {
+    it('uses all three parts when present', () => {
+      const ap = apData({
+        projectTitle: 'Do, what I say',
+      });
 
-  //     const fullName = person.getFullName();
-  //     expect(fullName).to.equal('Jane Smith Brown');
-  //   });
-
+      const projectTitle = ap.projectTitle;
+      expect(projectTitle).to.equal('Do, what I say');
+    });
+  });
   //   it('omits middlename when not present', () => {
   //     const person = givenPerson({
   //       firstname: 'Mark',
@@ -29,7 +27,7 @@ describe('Ap (unit)', () => {
   //   });
   // });
 
-  function givenAp(data: Partial<Ap>) {
-    return givenAp;
+  function apData(data: Partial<Ap>) {
+    return new Ap(givenAp(data));
   }
 });
