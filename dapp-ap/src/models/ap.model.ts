@@ -38,77 +38,77 @@ export class Ap extends Entity {
     type: 'string',
   })
   capabilityPerformance?: string;
-  
+
   @property({
     type: 'date',
   })
   periodOfPerformance?: string;
-  
+
   @property({
     type: 'string',
   })
   contractVehicle?: string;
-  
+
   @property({
     type: 'string',
   })
   contractType?: string;
-  
+
   @property({
     type: 'string',
   })
   awardType?: string;
-  
+
   @property({
     type: 'string',
   })
   proposedSolicitationType?: string;
-  
+
   @property({
     type: 'string',
   })
   performanceBasedApproach?: string;
-  
+
   @property({
     type: 'string',
   })
   bundlingDetermination?: string;
-  
+
   @property({
     type: 'string',
   })
   contractingOfficer?: string;
-  
+
   @property({
     type: 'string',
   })
   requestor?: string;
-  
+
   @property({
     type: 'string',
   })
   budgetApprover?: string;
-  
+
   @property({
     type: 'date',
   })
   date?: string;
-  
+
   @property({
     type: 'string',
   })
   form_id?: string;
-  
+
   @property({
     type: 'string',
   })
   status?: string;
-    
+
   @property({
     type: 'string',
   })
   description?: string;
- 
+
   @property({
     type: 'string',
   })

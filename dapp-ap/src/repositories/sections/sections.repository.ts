@@ -14,14 +14,12 @@ export class SectionsRepository {
   }
 
   async create(sectionsInstance: any): Promise<any> {
-    
     return await this.model.create(sectionsInstance);
   }
 
-  async replaceById(sectionsHttpParams: any): Promise <any> {
-
+  async replaceById(sectionsHttpParams: any): Promise<any> {
     // Documented in the dapp-ap controller - the sectionsHttpParams is a concatenation of:
-    // sectionsId and the sow JSON in the body 
+    // sectionsId and the sow JSON in the body
     return await this.model.replaceById(sectionsHttpParams);
   }
 }

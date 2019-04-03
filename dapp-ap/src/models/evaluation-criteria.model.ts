@@ -5,7 +5,7 @@ export class EvaluationCriteria extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: true
+    generated: true,
   })
   id: string;
   @property({
@@ -38,7 +38,6 @@ export class EvaluationCriteria extends Entity {
     type: 'string',
   })
   sourceSelectionProcedures?: string;
-
 
   constructor(data?: Partial<EvaluationCriteria>) {
     super(data);

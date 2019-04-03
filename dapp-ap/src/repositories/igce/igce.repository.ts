@@ -14,14 +14,12 @@ export class IgceRepository {
   }
 
   async create(igceInstance: any): Promise<any> {
-    
     return await this.model.create(igceInstance);
   }
 
-  async replaceById(igceHttpParams: any): Promise <any> {
-
+  async replaceById(igceHttpParams: any): Promise<any> {
     // Documented in the dapp-ap controller - the sowHttpParams is a concatenation of:
-    // sowId and the sow JSON in the body 
+    // sowId and the sow JSON in the body
     return await this.model.replaceById(igceHttpParams);
   }
 }

@@ -14,40 +14,38 @@ export const apDappDefinition = {
   paths: {
     '/dapp-ap/ap/{apid}/updateSow': {
       put: {
-          "x-controller-name": "SowController",
-          "x-operation-name": "replaceById",
-          "tags": [
-              "SowController"
-          ],
-          "responses": {
-              "204": {
-                  "description": "Sow PUT success"
-              }
+        'x-controller-name': 'SowController',
+        'x-operation-name': 'replaceById',
+        tags: ['SowController'],
+        responses: {
+          '204': {
+            description: 'Sow PUT success',
           },
-          parameters: [
-              {
-                  name: "ap_no",
-                  description:
-                    'The apId to use when retrieving data from the underlying microservices.',
-                  in: 'path',
-                  schema: {
-                      type: "string"
-                  },
-                  required: true
-              }
-          ],
-          requestBody: {
-              content: {
-                  "application/json": {
-                      "schema": {
-                          "$ref": "#/components/schemas/Sow"
-                      }
-                  }
+        },
+        parameters: [
+          {
+            name: 'ap_no',
+            description:
+              'The apId to use when retrieving data from the underlying microservices.',
+            in: 'path',
+            schema: {
+              type: 'string',
+            },
+            required: true,
+          },
+        ],
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/Sow',
               },
-              "x-parameter-index": 1
-          }
-      }
-  },
+            },
+          },
+          'x-parameter-index': 1,
+        },
+      },
+    },
     '/dapp-ap/ap': {
       get: {
         'x-operation-name': 'getAp',
@@ -132,21 +130,20 @@ export const apDappDefinition = {
           sowid: {
             type: 'string',
             description: 'The ID of the SOW attached to this AP',
-          }
+          },
         },
       },
-        Sow: {
-            title: "Sow",
-            properties: {
-                id: {
-                    "type": "string"
-                },
-                title: {
-                    "type": "string"
-                }
-            }
-        }
-    } 
-  }
+      Sow: {
+        title: 'Sow',
+        properties: {
+          id: {
+            type: 'string',
+          },
+          title: {
+            type: 'string',
+          },
+        },
+      },
+    },
+  },
 };
-

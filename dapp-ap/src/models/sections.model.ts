@@ -5,10 +5,10 @@ export class Sections extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: true
+    generated: true,
   })
   id: string;
-  
+
   @property({
     type: 'string',
   })
@@ -29,7 +29,6 @@ export class Sections extends Entity {
     itemType: 'string',
   })
   clauses?: string[];
-
 
   constructor(data?: Partial<Sections>) {
     super(data);

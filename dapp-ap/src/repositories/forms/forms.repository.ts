@@ -14,14 +14,12 @@ export class FormsRepository {
   }
 
   async create(formsInstance: any): Promise<any> {
-    
     return await this.model.create(formsInstance);
   }
 
-  async replaceById(formsHttpParams: any): Promise <any> {
-
+  async replaceById(formsHttpParams: any): Promise<any> {
     // Documented in the dapp-ap controller - the formsHttpParams is a concatenation of:
-    // formsId and the sow JSON in the body 
+    // formsId and the sow JSON in the body
     return await this.model.replaceById(formsHttpParams);
   }
 }

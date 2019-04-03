@@ -23,8 +23,8 @@ describe('HomePage', () => {
 
   it('exposes self-hosted explorer', async () => {
     await client
-    .get('/explorer-dapp-ap')
-    .expect(301)
-    .expect('location', '/explorer-dapp-ap/');
+      .get('/explorer-dapp-ap')
+      .expect(301)
+      .expect('location', '/explorer-dapp-ap/');
   });
 });

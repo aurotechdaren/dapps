@@ -36,5 +36,5 @@ export const apDappDefinition = {
         summary: 'Create an AP instance.',
       },
     },
-  }
-}
+  },
+};

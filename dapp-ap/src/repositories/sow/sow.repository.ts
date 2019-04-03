@@ -1,5 +1,4 @@
 import {dataSource} from './sow.swagger.datasource';
-import {Sow} from '../../models/sow.model';
 //import { ControllerDefaults } from '@loopback/boot';
 /* tslint:disable no-any */
 export class SowRepository {
@@ -15,14 +14,12 @@ export class SowRepository {
   }
 
   async create(sowInstance: any): Promise<any> {
-    
     return await this.model.create(sowInstance);
   }
 
-  async updateById(sowHttpParams: any): Promise <any> {
-
+  async updateById(sowHttpParams: any): Promise<any> {
     // Documented in the dapp-ap controller - the sowHttpParams is a concatenation of:
-    // sowId and the sow JSON in the body 
+    // sowId and the sow JSON in the body
     return await this.model.updateById(sowHttpParams);
   }
 }

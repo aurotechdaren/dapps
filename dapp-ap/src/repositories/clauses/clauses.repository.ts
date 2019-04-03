@@ -14,14 +14,12 @@ export class ClausesRepository {
   }
 
   async create(clausesInstance: any): Promise<any> {
-    
     return await this.model.create(clausesInstance);
   }
 
-  async replaceById(clausesHttpParams: any): Promise <any> {
-
+  async replaceById(clausesHttpParams: any): Promise<any> {
     // Documented in the dapp-ap controller - the clausesHttpParams is a concatenation of:
-    // clausesId and the sow JSON in the body 
+    // clausesId and the sow JSON in the body
     return await this.model.replaceById(clausesHttpParams);
   }
 }

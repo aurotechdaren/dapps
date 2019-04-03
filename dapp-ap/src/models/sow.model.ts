@@ -5,7 +5,7 @@ export class Sow extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: true
+    generated: true,
   })
   id: string;
 
@@ -23,7 +23,6 @@ export class Sow extends Entity {
     type: 'string',
   })
   contractAdministration?: string;
-
 
   constructor(data?: Partial<Sow>) {
     super(data);

@@ -14,14 +14,12 @@ export class EvaluationCriteriaRepository {
   }
 
   async create(evaluationCriteriaInstance: any): Promise<any> {
-    
     return await this.model.create(evaluationCriteriaInstance);
   }
 
-  async replaceById(evaluationCriteriaHttpParams: any): Promise <any> {
-
+  async replaceById(evaluationCriteriaHttpParams: any): Promise<any> {
     // Documented in the dapp-ap controller - the evaluationCriteriaHttpParams is a concatenation of:
-    // evaluationCriteriaId and the sow JSON in the body 
+    // evaluationCriteriaId and the sow JSON in the body
     return await this.model.replaceById(evaluationCriteriaHttpParams);
   }
 }
