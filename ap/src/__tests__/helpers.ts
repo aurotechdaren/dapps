@@ -9,7 +9,6 @@ export function givenAp(ap?: Partial<Ap>) {
     {
       projectTitle: 'do a thing',
       description: 'There are some things that need doing',
-      isComplete: false,
     },
     ap,
   );

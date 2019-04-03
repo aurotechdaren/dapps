@@ -23,9 +23,8 @@ describe('HomePage', () => {
 
   it('exposes self-hosted explorer', async () => {
     await client
-      .get('/explorer/')
-      .expect(200)
-      .expect('Content-Type', /text\/html/)
-      .expect(/<title>LoopBack API Explorer/);
+    .get('/explorer-evaluation-criteria')
+    .expect(301)
+    .expect('location', '/explorer-evaluation-criteria/');
   });
 });
