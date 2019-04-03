@@ -5,10 +5,6 @@ import {Comment} from '../models';
  * @param comment A partial (or complete) Comment object.
  */
 export function givenComment(comment?: Partial<Comment>) {
-  const data = Object.assign(
-    {
-    },
-    comment,
-  );
+  const data = Object.assign({}, comment);
   return new Comment(data);
 }

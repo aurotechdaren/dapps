@@ -22,7 +22,7 @@ import {CommentRepository} from '../repositories';
 export class CommentController {
   constructor(
     @repository(CommentRepository)
-    public commentRepository : CommentRepository,
+    public commentRepository: CommentRepository,
   ) {}
 
   @post('/comment', {

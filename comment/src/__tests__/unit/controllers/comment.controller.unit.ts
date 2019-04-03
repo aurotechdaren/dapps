@@ -38,7 +38,7 @@ describe('CommentController (unit)', () => {
       sinon.assert.calledWith(create, aComment);
     });
   });
-  
+
   describe('findCommentById', () => {
     it('returns a comment if it exists', async () => {
       findById.resolves(aCommentWithId);
@@ -59,13 +59,15 @@ describe('CommentController (unit)', () => {
     it('returns empty list if no comments exist', async () => {
       const expected: Comment[] = [];
       find.resolves(expected);
-      expect(await controller.find({where: { id: 'hgfhjfghjfjs'}})).to.eql(expected);
+      expect(await controller.find({where: {id: 'hgfhjfghjfjs'}})).to.eql(
+        expected,
+      );
       sinon.assert.called(find);
     });
 
     it('uses the provided filter', async () => {
-      const filter: Filter = {where: { id: 'do a thing'}};
-     find.resolves(aListOfComments);
+      const filter: Filter = {where: {id: 'do a thing'}};
+      find.resolves(aListOfComments);
       await controller.find(filter);
       sinon.assert.calledWith(find, filter);
     });
@@ -74,7 +76,10 @@ describe('CommentController (unit)', () => {
   describe('replaceComment', () => {
     it('successfully replaces existing items', async () => {
       replaceById.resolves();
-      await controller.replaceById(aCommentWithId.id as string, aChangedComment);
+      await controller.replaceById(
+        aCommentWithId.id as string,
+        aChangedComment,
+      );
       sinon.assert.calledWith(replaceById, aCommentWithId.id, aChangedComment);
     });
   });
@@ -126,7 +131,7 @@ describe('CommentController (unit)', () => {
     ] as Comment[];
     aChangedComment = givenComment({
       id: aCommentWithId.id,
-     });
+    });
 
     // Setup CRUD fakes
     ({

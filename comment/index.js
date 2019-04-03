@@ -12,8 +12,8 @@ if (require.main === module) {
         // useful when used with OASGraph to locate your application
         setServersFromRequest: true,
         endpointMapping: {
-          '/openapi-comment.json': { version: '3.0.0', format: 'json' },
-          '/openapi-comment.yaml': { version: '3.0.0', format: 'yaml' },
+          '/openapi-comment.json': {version: '3.0.0', format: 'json'},
+          '/openapi-comment.yaml': {version: '3.0.0', format: 'yaml'},
         },
       },
     },
