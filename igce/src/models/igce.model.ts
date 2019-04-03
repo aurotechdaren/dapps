@@ -5,10 +5,10 @@ export class Igce extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: true
+    generated: true,
   })
   id: string;
-  
+
   constructor(data?: Partial<Igce>) {
     super(data);
   }

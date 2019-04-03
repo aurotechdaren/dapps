@@ -38,7 +38,7 @@ describe('IgceController (unit)', () => {
       sinon.assert.calledWith(create, aIgce);
     });
   });
-  
+
   describe('findIgceById', () => {
     it('returns a igce if it exists', async () => {
       findById.resolves(aIgceWithId);
@@ -59,13 +59,15 @@ describe('IgceController (unit)', () => {
     it('returns empty list if no igces exist', async () => {
       const expected: Igce[] = [];
       find.resolves(expected);
-      expect(await controller.find({where: { id: 'hgfhjfghjfjs'}})).to.eql(expected);
+      expect(await controller.find({where: {id: 'hgfhjfghjfjs'}})).to.eql(
+        expected,
+      );
       sinon.assert.called(find);
     });
 
     it('uses the provided filter', async () => {
-      const filter: Filter = {where: { id: 'do a thing'}};
-     find.resolves(aListOfIgces);
+      const filter: Filter = {where: {id: 'do a thing'}};
+      find.resolves(aListOfIgces);
       await controller.find(filter);
       sinon.assert.calledWith(find, filter);
     });
@@ -126,7 +128,7 @@ describe('IgceController (unit)', () => {
     ] as Igce[];
     aChangedIgce = givenIgce({
       id: aIgceWithId.id,
-     });
+    });
 
     // Setup CRUD fakes
     ({

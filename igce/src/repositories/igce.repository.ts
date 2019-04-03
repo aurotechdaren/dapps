@@ -7,9 +7,7 @@ export class IgceRepository extends DefaultCrudRepository<
   Igce,
   typeof Igce.prototype.id
 > {
-  constructor(
-    @inject('datasources.igceDs') dataSource: IgceDsDataSource,
-  ) {
+  constructor(@inject('datasources.igceDs') dataSource: IgceDsDataSource) {
     super(Igce, dataSource);
   }
 }

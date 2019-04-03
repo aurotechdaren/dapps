@@ -22,7 +22,7 @@ import {IgceRepository} from '../repositories';
 export class IgceController {
   constructor(
     @repository(IgceRepository)
-    public igceRepository : IgceRepository,
+    public igceRepository: IgceRepository,
   ) {}
 
   @post('/igce', {

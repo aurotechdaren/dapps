@@ -5,10 +5,6 @@ import {Igce} from '../models';
  * @param igce A partial (or complete) Igce object.
  */
 export function givenIgce(igce?: Partial<Igce>) {
-  const data = Object.assign(
-    {
-    },
-    igce,
-  );
+  const data = Object.assign({}, igce);
   return new Igce(data);
 }
